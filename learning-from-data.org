@@ -1,0 +1,488 @@
+##+STARTUP: entitiespretty
+#+SETUPFILE: https://rawgit.com/subsid/notes/setup/theme-readtheorg.setup
+#+OPTIONS: toc:3
+#+TITLE: Learning from data course notes
+
+* 1 - The Learning Problem
+** The essence of machine learning
+- A pattern exists.
+- We cannot pin it down mathematically. (If we could, then why learn from data? :D)
+- We have enough data.
+** Simple Example
+We have a bunch of movies and many customers. We have some ratings
+given by these users for a subset of the movies.
+
+Can we recommend movies for a user? How?
+
+We can represent each user by a set of genres (/features/. Say comedy,
+action, romance etc). Ask the user how much he likes each of the
+genres. Similarly, represent movies by a bunch of genres and match
+each movie to each user.
+
+This works, but is not really learning. We have to go and ask each
+user how much he likes each genre. But if we have data (ratings given
+by a user for a movie), we can try learning these features using the
+data. This is 'learning from data'.
+** Components of learning (Lets take Supervised learning)
+Ex) A bank wants to know if it should approve credit for a customer.
+
+- Input x (Customer application)
+- Output y (good customer/ bad customer)
+- Target function f: X -> Y (ideal credit approval formula)
+
+In all learning problems, we do not know this target function
+(Remember, if we knew this, there is no need to learn from data)
+
+- Data: (x_{1}, y_1), (x_2, y_2) ... (x_N, y_N) (Data from past customers)
+- Hypothesis: g: X -> Y (an approximation of f, that we learn)
+
+(Check out the slides for the learning diagram)
+
+
+1) Target Function, f: \Chi \rarr \Upsilon
+2) Training Examples, (x_1, y_1), ... , (x_N, y_N)
+3) Learning Algorithm, \Alpha
+4) Error Measure E(h, f)
+5) Hypothesis Set, \Eta
+6) Learned hypothesis, g \approx f
+
+The hypothesis set can be infinite (Learn from the set of all possible
+functions) or finite (like linear functions, quadratic functions etc).
+*** What do we get to select in this learning process
+Well, we can change the learning algorithm and hypothesis set.
+Together, they define a /learning model/.
+** Simple Learning Model example, Peceptron
+- Can be used when data is linearly seperable and the output y is binary.
+- Given a data set (x_1, y_1), ... (x_N, y_N).
+
+Predict Sign(\Sigma^N_{i=0}(w_{i}.x_{i})) where x_0 = 1.
+
+How to find the weights w_{1}...w_{d}?
+*** Algorithm (Perceptron Learning Algorith, PLA)
+1) Initialize all weights to random numbers.
+2) Pick one of the points from (x_i, y_i) that has been misclassified. i.e Sign(w^{T}.x_n) \ne y_n
+3) Update w_(t+1) = w_t + y_{i}.x_i
+Intuitively this makes sense, we 'nudge' the weights in a direction
+such that y_i is classified correctly.
+4) Do this till all points are classified correctly.
+
+Other are other variations to this basic algorithm that will work with
+real-values outputs and non-linear data.
+** Basic Premise of learning
+/Use a bunch of observations to uncover an underlying process/
+
+Broad Permise \Rightarrow Many variations
+
+- Supervised learning
+Given a bunch of (input, correct output)... Find a hypothesis that
+works with new data.
+- Unsupervised learning
+Given a bunch of (input, ?), can we uncover some pattern? Create some
+kind of clusters of similar data.
+- Reinforcement learning
+Given (input, ?, grade for an output), can we improve our algorithm
+step by step.  Ex) Game playing, grade every move the algorithm makes,
+give penalty for bad moves and +ve score for good moves. Overtime, the
+algorithm gets better.
+* 2 - Is Learning Feasible
+That's interesting...  Well, the unknown target function can be any
+possible function. If we get 1000 data points, there can be multiple
+functions that satisfy these 1000 points and yet differ on the 1001Th
+point.
+** Related Experiment
+- Consider a bin filled with red and green marbles. The fraction of
+  green marbles in the bin is \mu.
+- Lets take a sample of 'N' marbles from this bin. The fraction of
+  green marbles in our sample is \nu.
+
+*** How close is \nu to \mu?
+Well, we can charaterize this using some inequality from probability.
+
+We'll use the inequality known as Hoeffding's inequality.
+
+P(|\mu - \nu| > \epsilon) \le 2.e^{-2.\epsilon^{2}.N}
+
+The statement "\nu = \mu" is P.A.C (Probably Approximately Correct)
+**** What does this mean?
+- Good thing, its a negative exponential with N. As N \uparrow the probability \downarrow. 
+- Bad thing, there is an \epsilon^2 in the exponent. If we need a tight bound,
+  we are going to pay the price.
+- Trade of: N, \epsilon, and the bound.
+** How does this relate to learning?
+- In our bin, the unknown was a number \mu, in learning the unknown is a function /f/.
+In both cases, we need to figure out an approximation to the unknown.
+- Think of each marble as a point x \in \Chi.
+- The color of marble is determined by our hypothesis function /h/.
+
+h(x) = f(x) \Rightarrow Marble is colored green.
+h(x) != f(x) \Rightarrow Marble is colored red.
+
+Thus, each bin is characterized by a hypothesis function /h/.
+*** So what does this mean?
+h is fixed. For a /given h/, \nu generalizes to \mu. (with the hoeffding's bound)
+
+Well, this is just verification, not learning.
+Given a particular h, we can take a sample of N points and see what our \nu is.
+*** Aside: Update the learning diagram to account for probability
+ The reason we are doing this bin analogy and related theory is so that
+ we can figure out if learning is possible or not.
+
+ In order to do that, we'll have to account for this /Probability/ in
+ our learning diagram. (points in this case)
+**** Updated learning diagram
+  1) Target Function, f: \Chi \rarr \Upsilon
+  2) Training Examples, (x_1, y_1), ... , (x_N, y_N)
+  2.5) /The training examples are drawn based on some probability distribution \Rho on \Chi./
+  3) Learning Algorithm, \Alpha
+  4) Hypothesis Set, \Eta
+  5) Learned hypothesis, g \approx f
+*** Notation change for Learning
+- \mu is 'out of sample' E_out(h).
+- \nu is 'in sample' E_in(h).
+
+Thus, the hoeffding inequality becomes,
+
+P(|E_in(h) - E_out(h)| > \epsilon) \le 2e^{-2.\epsilon^{2}.N}
+*** Account for multiple hypothesis
+We have multiple hypothesis functions, thus, we can have multiple
+bins, one for each /h/.
+
+The problem is hoeffding doesn't apply to multiple bins.  (Intuition,
+toss a coin 10 times, p(10 heads) = 0.1%, toss 1000 coins, 10 times
+each, p(atleast 1 coin getting 10 heads) \approx 63%).
+
+Thus, the chance that in atleast one of the bins, the E_in may not be a
+good approximation for E_out and we end up picking that. (like picking
+10 green marbles).
+*** Simple soulution and summary
+Once we pick our final hypothesis /g/ (from /h/), we want to know
+
+P[|E_in(g) - E_out(g)| \ge \epsilon]. We want to show that this is pretty small.
+
+We can use the union bound for this. (Its a pretty loose bound). If we have 'M' hypothesis,
+
+P[|E_in(g) - E_out(g)| \ge \epsilon] \le P[|E_in(h_1) - E_out(h_1)| \ge \epsilon] or
+                          P[|E_in(g) - E_out(g)| \ge \epsilon] or ... or
+                          P[|E_in(h_M) - E_out(h_M)| \ge \epsilon] \le \Sigma^M_{m=1}2.e^{-2.\epsilon^{2}.N}
+
+Thus, *P[|E_in(g) - E_out(g)| \ge \epsilon] \le 2.M.e^{-2.\epsilon^{2}.N}*.
+
+Hmm... So using a lot of hypothesis can lead to bad things happening.
+
+But as we can see, when M is finite, we can learn. i.e E_in will track E_out.
+
+Thus, in  a probabilistic sense learning is feasible.
+* 3 - Linear Model 1
+** Questions
+- Improving regression model, is it possible to accommodate more data
+  in a supervised learning problem.
+** Real data set
+- Consider the supervised learning problem of identifying digits (for say postal code).
+*** Input Representation
+- A digit is a x_256 vector of pixel values (x_0, x_1 ... x_256). This is wayy too complex and
+hard to optimize. Our perceptron algorithm would struggle.
+- Instead we can 'extract some features' that are a good representation of the data.
+Ex) Symmetry, Intesity.
+Now we only have to find weights (w_0, w_1, w_2) which is easier than trying to find (w_0, ... w_256).
+** Linear Classification - Perceptron Learning Algorithm
+What does PLA do?
+- It reduces E_in. (And we hope that E_out tracks E_in, we got this bound last week)
+- In case of linearly seperable data, the PLA algorithm converges. But
+  for non-seperable data, it cannot converge. Hence we stop after a
+  fixed number of iterations.
+*** The 'pocket' Algorithm
+This is a modification of the perceptron learning algorithm, where we
+'remember' the weights for which E_in is the least, and use that as our
+final hypothesis /g/.
+** Linear Regression
+Regression - 'real valued output'. Thats all it means. The term comes
+from earlier work in statistics, there was so much work on it that
+people could not get rid of the term. All it means is the output is
+real valued.
+
+Ex) Credit line (dollar amount) In the classification example, we
+approved or denied credit based on past customers, using linear
+regression we can try and predict the actual credit line. How much
+credit should we give a person?
+
+Input x = list of features like {age, salary, years in residence, years in job, current debt ...}
+
+Linear regression output: 
+
+h(x) = \Sigma^{d}_{i=0} w_{i}.x_{i} = w^{T}.x = "real value"
+
+w = weight vector [w_0, w_1 ... w_d]
+x = 1 training example [x_0, x_1 ... x_d]
+
+This is called 'linear regression' because the form in terms of the input 'x' is linear.
+*** What is linear regression trying to find
+
+In our credit line example,
+
+We have our input training examples as (x_1, y_1), (x_2, y_2), ... (x_N, y_N)
+
+Each y_n is a 'real value', the approved credit amount for the input x_n.
+
+Linear regression tries to replicate this behavior.
+*** How to measure error
+How well does h(x) approximate f(x) (the target function)? 
+For every example x_i, the given output value is y_i and the predicted value is h(x_i).
+
+We can define many error measures (we'll get to this in unit 4).
+
+For now, we'll pick a convenient (we'll see why) error measure, /the squared error/.
+
+(h(x) - y)^2
+
+The average squared error for all our input points is:
+
+in-sample error, E_in(h) = 1/N * \Sigma^N_{n=1}.(h(x_n) - f(x_n))^2
+
+Our algorithm tries to minimize this error.  The approximation our
+'linear' model comes up with is a hyperplane (one-dimenstion short of
+the space we are working with).
+*** Expression for E_in
+Let's try to write this in vector form.
+
+TODO :: seems like small caps doesn't work with mathjax, need to fix the x to be smallcap(x).
+
+\begin{equation}
+\begin{split}
+E_{in}(w)	&= \frac{1}{N} \Sigma^N_{n=1}(w^{T}.x_n - y_n)^2 \\
+ &= \frac{1}{N} || X.w - y ||^2
+\end{split}
+\end{equation}
+
+where X:
+\begin{bmatrix} 
+\ldots & x_1^T & \ldots  \\
+\ldots & x_2^T & \ldots  \\
+\ldots & \vdots & \ldots  \\
+\ldots & x_N^T & \ldots  \\
+\end{bmatrix}
+
+w:
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+\vdots \\
+w_d
+\end{bmatrix}
+
+y:
+
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_N
+\end{bmatrix}
+*** Minimizing E_in
+We can use some matrix calculus and find the min of our E_in expression.
+\begin{equation}
+\begin{split}
+E_{in}(w) & = \frac{1}{N}||Xw - y||^2 \\
+\nabla.E_{in}(w) & = \frac{2}{N} X^T||Xw - y|| = 0
+\end{split}
+\end{equation}
+
+Solving for w, we get
+
+$$ X^{T}Xw = X^{T}.y $$
+$$ w = X^{\dagger}.y $$
+
+where $X^{\dagger} = (X^{T}.X)^{-1}.X^{T}$
+This is called the 'pseudo-inverse' of X.
+X being non-invertible does not have an inverse, but the pseudo-inverse is pretty interesting. 
+
+$X.X^{\dagger} = I$. So it is an inverse
+in some sense. ( $X.X^{\dagger}$ is not identity. Hence the
+pseudo).
+**** From a computational standpoint, its a nice quantity
+$$X^{\dagger} = (X^{T}.X)^{-1}.X^{T}$$$
+
+X is (N * d+1)
+X^T is (d+1 * N)
+
+Thus X^{T}.X is (d+1 * d+1)
+
+Usually, our d is small and N is large. Luckily our inverse is a fairly 'small' matrix :)
+There are many packages that compute this quantity.
+
+The final matrix X^\dagger has dimensions  (d+1 *  N)
+
+X^{\dagger}.y has dimensions (d+1 * 1) as expected. (for the weights)
+*** The linear regression algorithm
+1) Construct X and y using the training examples.
+2) Compute pseudo-inverse $X^{\dagger} = (X^{T}.X)^{-1}.X^{T}.
+3) return $w = X^{\dagger}.y$.
+Done! boom! (one-step learning ;))
+
+Since its so straight forward, it can be used as a component in many other learning algorithms.
+*** Linear regression for classification
+
+Classification is just a special case of regression right? The output is 1 or -1, which is a real-value.
+Can we use linear regression for that?
+
+We can define our final output as sign(w^{T}.x). The assumption here is
+that w^{T}.x will be negative for examples with -1, and positive for
+examples with output +1.
+
+However, our regression algorithms doesn't quite work for
+classification as our error measure is 'squared error'.
+
+Our algorithm simultaneously tries to make all points close to + or -
+1, but the extreme points affect our error more, hence the linear boundary is not very good.
+
+Instead, what we can do is use linear regression for setting our
+initial set of weights for the 'pocket' algorithm! (instead of
+starting with 0s).
+** Nonlinear transformation
+In real life, data is not always linearly seperable.
+
+For example, consider a circular decision boundary, where inside circle, all points are +1 and outside -1.
+
+Can we come up with this kind of a 'circular' hypothesis function that seperates the data?
+Yes, but the problem is thats not linear.
+
+Can we do that with linear models?
+The answer is yes.
+*** Linear in what?
+Regression implements
+
+$$ y = \Sigma^{d}_{i=0}x_{i}.w_{i} $$
+
+For classification
+
+$$ y = sign(\Sigma^{d}_{i=0}x_{i}.w_{i})$$
+
+The algorithm works because of linearity in the 'weights' not x's. 
+w^{T}.x is linear in /w/.
+
+Thus, we can add 'features' that are non-linearly functions of x (like
+3.x_{d1}.x^2_{d2} etc) and apply our linear model algorithm.
+* 4 - Error and Noise
+** Non-Linear transormation continued
+Intuitive idea, Take a point in input space x and transform it using
+some non-linear function of x, find weights in this new space and use
+that to predict y.
+
+This trick can be used to create arbitrarilty complex dimensions and learn.
+*** Why does it work?
+Any non-linear dependency in one subspace can be treated as a linear
+dependency in a more complex space.
+
+Ex) A circular boundary (x_1^2 + x_2^2) varies linearly in a space that
+has x_1^2 and x_2^2 as dimensions.
+*** What transforms to what 
+We apply a transformation \phi that maps X -> Z
+
+Input point (x_1, x_2 ... x_d) -> (z_1 ... z_{\tilde{d}}) 
+All the input data in transformed (x_1 ... x_N) -> (z_1 ... z_N)
+Find weights \tilde{w} in Z space (dims = \tilde{d+1}) (w_0, w_1 ... w_{\tilde{d}}
+Output remains same (y_1, ... y_N) -> (y_1 ... y_N)
+
+Final hypothesis g(x) = sign(\tilde{w}^{T}.z) = sign(~{w}^{T}.\phi(x))
+** Error Measures
+What does "h \approx f" mean?
+
+This is what is quantified by an Error Measure.
+
+$$E(h, f)$$
+
+This is actually a functional that takes 2 functions and returns a
+function E. However, in most cases we can think of E being a pointwise
+error measure.
+
+Pointwise error e(h(x), f(x)). 
+examples:
+- squared error (h(x) - f(x))^2
+- binary error { 0 if h(x) = f(x) else 1}
+
+Overall error E(h, f) = average of pointwise errors = e(h(x), f(x))
+
+In-sample error, 
+
+$$ E_{in}(h) = \frac{1}{N} \Sigma^N_{(n=1)}e(h(x_n), f(x_n)) $$
+
+Simple average. Makes sense.
+
+Out-of sample error, is the expected value over all points in our input space.
+
+$$ E_{out}(h) = E_{x}[e(h(x), f(x))] $$
+
+** How to choose an error measure
+- Ideally, the error measure chosen should always be domain specific
+  and specified by the user.
+(See slides for the supermarket and CIA example, where the cost of a
+false accept/ false reject is very different).
+- In the absense of this knowledge, we pick error measures that are
+1) Plausible. 
+2) Fiendly (easy to work with), gives a closed form solution.
+ex) Squared error. (gave a closed form solution for the linear regression model)
+** Noisy targets
+In reality, we rarely get a clean target function. We'll mostly have
+to work with noisy targets.
+
+Ex) In the credit approval example, is it possible that 2 people, who
+have the same values for all the d dimensions, have different
+decisions?
+
+yup! Our features may not capture everything there possibly is for
+credit approval. Thus, 2 identical customers => 2 different behaviours.
+
+Hence, our target function /f/ is not a function. (A function can't map
+a point in domain to different points in the codomain)
+
+Instead of $y = f(x)$, We have a target distribution, $P(y|x)$
+
+Thus, $(x, y)$ is now generated by a joint distribution:
+
+$$ P(x).P(y|x) $$
+
+Noisy Target = deterministic target f(x) = E[y|x] plus noise y - f(x).
+
+** Components of Learning (including noisy targets)
+
+1) Unknown Target Distribution P(y|x).
+
+target function f(x) X -> Y plus noise y - f(x)
+E[y|x] plus y - f(x)
+
+1) Training Examples, (x_1, y_1), ... , (x_N, y_N)
+2) /The training examples are drawn based on some probability distribution \Rho on \Chi and the taget distribution P(y|x) on y/
+3) Learning Algorithm, \Alpha
+4) Error Measure E(h, f)
+5) Hypothesis Set, \Eta
+6) Learned hypothesis, g \approx f
+** Distinction between P(y|x) and P(x)
+- P(x) was introduced to accommodate the hoeffding's inequality.
+- P(y|x) gives the probability of a particular y given x.
+- Each training point is generated based on this. ('multiply' the two
+  to get the probability of a point (x, y))
+
+Differences between the two:
+- P(y|x) is what our algorithm tries to learn.
+- The input distribution P(x) quanties the relative importance of a
+  point x. (but we don't learn this)
+- Merging P(x) and P(y|x) as P(x, y) mixes two concepts.
+Our target distribution is only P(y|x).
+** Preamble to the theory
+*** What do we know so far?
+
+We proved that E_out(h) \approx E_in(h) based on some bound.
+All this means is that E_in is a good proxy for E_out.
+
+For us to learn, we have to find g \approx f, which means E_{out}(g) \approx 0.
+
+$E_out \approx E_in $ means good generalization.
+*** Full story of learning has 2 questions
+E_out(g) \approx 0 is achieved through:
+
+E_out(g) \approx E_in(g) AND E_{in}(g) \approx 0.
+
+1) Can we make sure that E_out(g) is close to E_{in}(g)?
+2) Can we make E_{in}(g) small enough to have learned?
+
+Good stuff!
+
