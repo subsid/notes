@@ -1,5 +1,4 @@
-##+STARTUP: entitiespretty
-#+SETUPFILE: https://rawgit.com/subsid/notes/master/setup/theme-readtheorg.setup
+#+SETUPFILE: setup/theme-readtheorg.setup
 #+OPTIONS: toc:3
 #+TITLE: Learning from data course notes
 
