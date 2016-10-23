@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-11 Tue 16:02 -->
+<!-- 2016-10-24 Mon 00:25 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Learning from data course notes</title>
@@ -206,7 +206,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline14">2.2.2. Aside: Update the learning diagram to account for probability</a></li>
 <li><a href="#orgheadline15">2.2.3. Notation change for Learning</a></li>
 <li><a href="#orgheadline16">2.2.4. Account for multiple hypothesis</a></li>
-<li><a href="#orgheadline17">2.2.5. Simple soulution and summary</a></li>
+<li><a href="#orgheadline17">2.2.5. Simple solution and summary</a></li>
 </ul>
 </li>
 </ul>
@@ -260,6 +260,59 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline45">4.7.2. Full story of learning has 2 questions</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#orgheadline56">5. 5 - Training vs Testing</a>
+<ul>
+<li><a href="#orgheadline48">5.1. What is the difference between training and testing?</a></li>
+<li><a href="#orgheadline49">5.2. Where did M come from?</a></li>
+<li><a href="#orgheadline55">5.3. Can we improve M?</a>
+<ul>
+<li><a href="#orgheadline50">5.3.1. Why do we care about this?</a></li>
+<li><a href="#orgheadline51">5.3.2. Dichotomies (mini-hypothesis)</a></li>
+<li><a href="#orgheadline52">5.3.3. Growth Funciton</a></li>
+<li><a href="#orgheadline53">5.3.4. key terms: Shattering and Breakpoint</a></li>
+<li><a href="#orgheadline54">5.3.5. What can we do with this stuff?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline64">6. 6 - Theory of generalization</a>
+<ul>
+<li><a href="#orgheadline57">6.1. 2 things to prove</a></li>
+<li><a href="#orgheadline63">6.2. Bounding \(m_H(N)\)</a>
+<ul>
+<li><a href="#orgheadline58">6.2.1. Key quantity</a></li>
+<li><a href="#orgheadline59">6.2.2. Recursive bound</a></li>
+<li><a href="#orgheadline60">6.2.3. B(N, k) is a polynomial!</a></li>
+<li><a href="#orgheadline61">6.2.4. How can m<sub>H</sub>(N) replace M</a></li>
+<li><a href="#orgheadline62">6.2.5. The Vapnik-Chervonenkis Inequality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline72">7. 7 - The VC-Dimension</a>
+<ul>
+<li><a href="#orgheadline65">7.1. What is this?</a></li>
+<li><a href="#orgheadline66">7.2. VC-dimension and learning</a></li>
+<li><a href="#orgheadline67">7.3. VC-dimension of the perceptron</a></li>
+<li><a href="#orgheadline70">7.4. Interpretting the vc dimension (using the perceptron example)</a>
+<ul>
+<li><a href="#orgheadline68">7.4.1. Degrees of freedom</a></li>
+<li><a href="#orgheadline69">7.4.2. Number of data points needed</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline71">7.5. Rearranging things</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline79">8. 8 - Bias-Variance Tradeoff</a>
+<ul>
+<li><a href="#orgheadline73">8.1. Approximation-generalization tradeoff</a></li>
+<li><a href="#orgheadline74">8.2. Quantifying this trade-off</a></li>
+<li><a href="#orgheadline75">8.3. Start with E<sub>out</sub></a></li>
+<li><a href="#orgheadline76">8.4. Bias and Variance</a></li>
+<li><a href="#orgheadline77">8.5. Lesson learned</a></li>
+<li><a href="#orgheadline78">8.6. Learning curves (expected E<sub>out</sub> and E<sub>in</sub>)</a></li>
 </ul>
 </li>
 </ul>
@@ -587,14 +640,14 @@ good approximation for E<sub>out</sub> and we end up picking that. (like picking
 </div>
 </div>
 <div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17"><span class="section-number-4">2.2.5</span> Simple soulution and summary</h4>
+<h4 id="orgheadline17"><span class="section-number-4">2.2.5</span> Simple solution and summary</h4>
 <div class="outline-text-4" id="text-2-2-5">
 <p>
 Once we pick our final hypothesis <i>g</i> (from <i>h</i>), we want to know
 </p>
 
 <p>
-P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &ge; &epsilon;]. We want to show that this is pretty small.
+P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &gt; &epsilon;]. We want to show that this is pretty small.
 </p>
 
 <p>
@@ -602,13 +655,13 @@ We can use the union bound for this. (Its a pretty loose bound). If we have 'M' 
 </p>
 
 <p>
-P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &ge; &epsilon;] &le; P[|E<sub>in</sub>(h<sub>1</sub>) - E<sub>out</sub>(h<sub>1</sub>)| &ge; &epsilon;] or
-                          P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &ge; &epsilon;] or &#x2026; or
-                          P[|E<sub>in</sub>(h<sub>M</sub>) - E<sub>out</sub>(h<sub>M</sub>)| &ge; &epsilon;] &le; &Sigma;<sup>M</sup><sub>m=1</sub>2.e<sup>-2.&epsilon;<sup>2</sup>.N</sup>
+P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &gt; &epsilon;] &le; P[|E<sub>in</sub>(h<sub>1</sub>) - E<sub>out</sub>(h<sub>1</sub>)| &gt; &epsilon;] or
+                          P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &gt; &epsilon;] or &#x2026; or
+                          P[|E<sub>in</sub>(h<sub>M</sub>) - E<sub>out</sub>(h<sub>M</sub>)| &gt; &epsilon;] &le; &Sigma;<sup>M</sup><sub>m=1</sub>2.e<sup>-2.&epsilon;<sup>2</sup>.N</sup>
 </p>
 
 <p>
-Thus, <b>P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &ge; &epsilon;] &le; 2.M.e<sup>-2.&epsilon;<sup>2</sup>.N</sup></b>.
+Thus, <b>P[|E<sub>in</sub>(g) - E<sub>out</sub>(g)| &gt; &epsilon;] &le; 2.M.e<sup>-2.&epsilon;<sup>2</sup>.N</sup></b>.
 </p>
 
 <p>
@@ -867,7 +920,7 @@ pseudo).
 </div>
 <ol class="org-ol"><li><a id="orgheadline28"></a>From a computational standpoint, its a nice quantity<br  /><div class="outline-text-5" id="text-3-4-4-1">
 <p>
-\[X^{\dagger} = (X^{T}.X)^{-1}.X^{T}\]$
+\[X^{\dagger} = (X^{T}.X)^{-1}.X^{T}\]
 </p>
 
 <p>
@@ -1226,7 +1279,7 @@ For us to learn, we have to find g &asymp; f, which means E<sub>out</sub>(g) &as
 </p>
 
 <p>
-$E<sub>out</sub> &asymp; E<sub>in</sub> $ means good generalization.
+\(E_out \approx E_in\) means good generalization.
 </p>
 </div>
 </div>
@@ -1253,10 +1306,842 @@ Good stuff!
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline56" class="outline-2">
+<h2 id="orgheadline56"><span class="section-number-2">5</span> 5 - Training vs Testing</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline48" class="outline-3">
+<h3 id="orgheadline48"><span class="section-number-3">5.1</span> What is the difference between training and testing?</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+From our previous discussions, hoeffding inequality for \(E_{in}, E_{out}\)
+</p>
+
+<p>
+Testing:
+</p>
+
+<p>
+\[ P[ |E_{in} - E_{out}| \gt \epsilon ] \le 2.e^{-2.\epsilon^{2}.N} \]
+</p>
+
+<p>
+Training: 
+</p>
+
+<p>
+\[ P[ |E_{in} - E_{out}| \gt \epsilon ] \le 2.M.e^{-2.\epsilon^{2}.N} \]
+</p>
+
+<p>
+In case of testing, we have already fixed a hypothesis, and we see
+what are the chances that it will generalize to E<sub>out</sub>.
+</p>
+
+<p>
+In training, we go through a bunch of hyposthesis, to figure out which
+is the best one, that minimizes E<sub>in</sub>. This 'contaminates' our ability
+to generalize.
+</p>
+
+<p>
+The goal in the next 2 lectures, will be to replace this <i>M</i> with a
+tighter bound. 
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline49" class="outline-3">
+<h3 id="orgheadline49"><span class="section-number-3">5.2</span> Where did M come from?</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Bad events B<sub>1</sub>, B<sub>2</sub> &#x2026; B<sub>m</sub> are given by
+</p>
+
+<p>
+\[ |E_{in}(m) - E_{out}(m)| > \epsilon \]
+</p>
+
+<p>
+i.e, for a given hypothesis, if \(|E_{in}(m) - E_{out}(m)| \gt \epsilon\),
+then its a bad event. We wanted to know what's the probability that
+our final hypothesis is bad&#x2026; Well, we know the final hypothesis will
+be bad, if any of our hypothesis is bad.
+</p>
+
+<p>
+Thus, we tried to find a bound on:
+</p>
+
+<p>
+\[ P[B_{1} or B_{2} or ... B_{M}] \]
+</p>
+
+<p>
+This is where we used the union bound and said that its less than the
+sum of probabilities of each of the hypothesis being bad.
+</p>
+
+<p>
+Now this bound predicts:
+</p>
+
+<p>
+\[ P[B_{1} or B_{2} or ... B_{M}] \le P[B_{1}] + P[B_{2}] + ... P[B_{M}] \]
+</p>
+
+<p>
+This is a very loose bound, and does not take into consideration the
+overlap of the bad events Bs'.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline55" class="outline-3">
+<h3 id="orgheadline55"><span class="section-number-3">5.3</span> Can we improve M?</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Note: The full proof is available in the book. These notes just give
+an intuitive feel for the idea.
+</p>
+
+<p>
+Yup, as bad events are very overlapping.
+</p>
+
+<p>
+To see this, consider a hypothesis h<sub>1</sub>. Let points {x<sub>1</sub>, x<sub>2</sub>, &#x2026; x<sub>n</sub>}
+be our training points.
+</p>
+
+<p>
+Now, h<sub>1</sub> classifies each of these points as +1 or -1.
+Consider another hypothesis h<sub>2</sub>, which also classifies these points as +1 and -1.
+</p>
+
+<p>
+Let's say h<sub>1</sub>, h<sub>2</sub> show the same classification for all of our
+training points, but vary slightly outside of E<sub>in</sub>.
+</p>
+
+<p>
+This means, |E<sub>in</sub>(h<sub>1</sub>) - E<sub>out</sub>(h<sub>1</sub>)| (say 1)
+&asymp; |E<sub>in</sub>(h<sub>2</sub>) - E<sub>out</sub>(h<sub>2</sub>)| (say 2).
+</p>
+</div>
+
+<div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50"><span class="section-number-4">5.3.1</span> Why do we care about this?</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+That's because if P[1 &gt; &epsilon;], P[2 &gt; &epsilon;] is also pretty
+high.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51"><span class="section-number-4">5.3.2</span> Dichotomies (mini-hypothesis)</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<p>
+A hypothesis \(h: X -> {+1, -1}\).
+A dichotomy \(h: x_{1}, x_{2} ... x_{N} -> {+1, -1}\)
+</p>
+
+<p>
+Thus, a dichotomy is defined only on points in the input space.
+</p>
+
+<p>
+Number of hypothesis |H| can be infinite, but number of dichotomies can be atmost 2<sup>N</sup>.
+</p>
+
+<p>
+Dichotomy is a candidate for replacing <i>M</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline52" class="outline-4">
+<h4 id="orgheadline52"><span class="section-number-4">5.3.3</span> Growth Funciton</h4>
+<div class="outline-text-4" id="text-5-3-3">
+<p>
+Growth function \(m_H(N)\) is defined as the most number of dichotomies on any 'N' points.
+</p>
+
+<p>
+What does that mean? Pick any set of 'N' points from the input space,
+such that maximum number of dichotomies can be realized.
+</p>
+
+<p>
+\[ m_H(N) = max_{x_{1}, x_{2} ... x_{N}}|H(x_{1} ... x_{N}|. \]
+</p>
+
+<p>
+Also \(m_H(N) \le 2^N\)
+</p>
+
+<p>
+For example, lets take the perceptron model in 2-D space.
+</p>
+
+<ul class="org-ul">
+<li>Given N = 3, we can arrange 3 points in a way such that all possible
+2<sup>3</sup> = 8 dichotomies can be realized.</li>
+</ul>
+
+<p>
+Thus, \(m_H(3) = 2^3\) (Maximum possible dichotomies)
+</p>
+
+<ul class="org-ul">
+<li>Given N = 4, no matter how we arrange 4 points, we cannot get all
+possible dichotomies of 2<sup>4</sup> = 16. We'll get something less than
+2<sup>4</sup>. (Actual value is 14)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="section-number-4">5.3.4</span> key terms: Shattering and Breakpoint</h4>
+<div class="outline-text-4" id="text-5-3-4">
+<p>
+We call 'N' points as being <i>shattered</i> by a hypothesis set, if we can
+realize all possible 2<sup>N</sup> possibilities.
+</p>
+
+<p>
+Definition: If no dataset of size 'k' can be <i>shattered</i> by a
+hypothesis set <i>H</i>, then k is a <i>breakpoint</i> for <i>H</i>.
+</p>
+
+<p>
+Ex) The breakpoint for 2-D perceptron is 4. \(m_H(k) \lt 2^{m}\)
+</p>
+
+<p>
+No break point =&gt; \(m_H(N) = 2^{N}\)
+</p>
+
+<p>
+Any break point =&gt; \(m_H(N) \lt 2^{N}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="section-number-4">5.3.5</span> What can we do with this stuff?</h4>
+<div class="outline-text-4" id="text-5-3-5">
+<p>
+We had,
+</p>
+
+<p>
+\[ P[ |E_{in} - E_{out}| \gt \epsilon ]  \le 2.M.e^{-2.\epsilon^{2}.N} \]
+</p>
+
+<p>
+Here is what we can try to do, if we can replace <i>M</i> with m<sub>H</sub>(N) and
+prove that m<sub>H</sub>(N) is polynomial, then we can get a finite bound on
+P[B<sub>1</sub> or B<sub>2</sub> &#x2026; B<sub>N</sub>], that is finite even for an infinite hypothesis
+sets.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline64" class="outline-2">
+<h2 id="orgheadline64"><span class="section-number-2">6</span> 6 - Theory of generalization</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="orgheadline57"><span class="section-number-3">6.1</span> 2 things to prove</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Prove that \(m_H(N)\) is polynomial.</li>
+<li>Proof that \(m_H(N)\) can replace M.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline63" class="outline-3">
+<h3 id="orgheadline63"><span class="section-number-3">6.2</span> Bounding \(m_H(N)\)</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+The goal is to show \(m_H(N)\) &le; a polynomial.
+</p>
+
+<p>
+Checkout lectures/book for the entire proof, but here is the basic idea.
+</p>
+</div>
+<div id="outline-container-orgheadline58" class="outline-4">
+<h4 id="orgheadline58"><span class="section-number-4">6.2.1</span> Key quantity</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<p>
+\(B(N, k)\): Maximum number of dichotomies on N points, with a break
+point k. 
+<b>Note</b>: This does not depend on the hypothesis set or input
+space, it is purely combinatorial.
+</p>
+
+<p>
+Given, N points and a break point k, can we come up with a polynomial
+bound for \(m_H(N, k)\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline59" class="outline-4">
+<h4 id="orgheadline59"><span class="section-number-4">6.2.2</span> Recursive bound</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<p>
+The proof is based on a recursive argument. (see lectures for details)
+</p>
+
+<p>
+Divide all possible dichotomies, into 2 types, &alpha; and 2.&beta;.
+</p>
+
+<p>
+&alpha;:
+</p>
+
+<p>
+Dichotomies that differ in N-1 points, (excluding the last point)
+</p>
+
+<p>
+2.&beta;
+Dichotomies that differ in the N<sup>th</sup> point.
+i.e all {x<sub>1</sub>, x<sub>2</sub> &#x2026; x<sub>N-1</sub>} come twice, once with Nth point as +1 and once with Nth point as -1.
+</p>
+
+<p>
+\[B(N, k) \le \alpha + 2.\beta\]
+</p>
+
+<p>
+Consider &alpha; + &beta;. Every element in this set is different.  If we can find all possible
+patterns on any k columns here, that means we can find all possible
+patterns on \(B(N, k)\) (which is not possible)
+</p>
+
+<p>
+\[ \alpha + \beta \le B(N-1, k) \] 
+</p>
+
+<p>
+Consider &beta;,
+</p>
+
+<p>
+\[ \beta \le B(N-1, k-1) \] 
+</p>
+
+<p>
+If we had all possible patterns for any k-1 guys in the N-1 points,
+that means we have all possible patterns for k guys on N points. (by
+construction) This is not true because of our definition of B(N, k).
+</p>
+
+<p>
+\[B(N, k) \le B(N-1, k) + B(N-1, k-1)\]
+</p>
+
+<p>
+Solving for this, we get
+</p>
+
+<p>
+\[B(N, k) \le \Sigma^{k-1}_{0} {N \choose i}\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline60" class="outline-4">
+<h4 id="orgheadline60"><span class="section-number-4">6.2.3</span> B(N, k) is a polynomial!</h4>
+<div class="outline-text-4" id="text-6-2-3">
+<p>
+For a given H, the break point k is fixed.
+</p>
+
+<p>
+m<sub>H</sub>(N) &le; B(N, k)
+</p>
+
+<p>
+B(N, k) is polynomial in N. The maximum power in B(N, k) is N<sup>k-1</sup>, hence its a polynomial.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline61" class="outline-4">
+<h4 id="orgheadline61"><span class="section-number-4">6.2.4</span> How can m<sub>H</sub>(N) replace M</h4>
+<div class="outline-text-4" id="text-6-2-4">
+<p>
+This is a slightly involved proof, given in the text book.
+</p>
+
+<p>
+See slides for a pictorial proof. Here is the basic idea&#x2026;
+3 points
+</p>
+<ol class="org-ol">
+<li>How does m<sub>H</sub>(N) relate to overlaps?</li>
+<li>What to do about E<sub>out</sub></li>
+<li>Putting it together</li>
+
+<li>The basic idea is that, a dichotomy captures overlaps. Since a
+dichotomy changes only when any one of the points in our sample is
+classified differently, it captures the overlap between all
+hypothesis that classify all points in the input space the same
+way!</li>
+<li>This is what Vapnik-Chervonenki did,</li>
+</ol>
+<p>
+For a given hypothesis h, we compute E<sub>in</sub>(h) and E<sub>out</sub>(h).
+How do we get rid of E<sub>out</sub>?
+Pick another sample E<sub>in'</sub>(h)
+</p>
+
+<p>
+Does E<sub>in</sub>(h) track E<sub>in'</sub>(h)? Well yes, a little more loosely, but
+yes. The advantage is that, doing so allows us to stay within the
+realm of dichotomies.
+</p>
+
+<ol class="org-ol">
+<li>Putting this stuff together, we get the v.c inequality.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline62" class="outline-4">
+<h4 id="orgheadline62"><span class="section-number-4">6.2.5</span> The Vapnik-Chervonenkis Inequality</h4>
+<div class="outline-text-4" id="text-6-2-5">
+<p>
+\[ P[|E_{in}(g) - E_{out}(g) | \gt \epsilon] \le 4.m_{H}(2N).e^{-\frac{1}{8}.\epsilon^{2}.N} \]
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline72" class="outline-2">
+<h2 id="orgheadline72"><span class="section-number-2">7</span> 7 - The VC-Dimension</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Most useful quantity from all of the theory we discussed. Something to
+remember throughout your career ;)
+</p>
+</div>
+<div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65"><span class="section-number-3">7.1</span> What is this?</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+The VC-dimension is defined for a hypothesis set <i>H</i>, denoted by d<sub>VC</sub>(H)
+</p>
+
+<p>
+<i>It's the maximum number of points that can be shattered by a given hypothesis
+set.</i> Formally, its the largest value of N for which \(m_H(N) = 2^{N}\).
+</p>
+
+<p>
+\(N \le d_VC(H) \Rightarrow H can shatter N points\) 
+\(k \ge d_VC(H) => k is a break point for H\)
+</p>
+
+<p>
+In terms of a breakpoint k, the growth function
+\[ m_{H}(N) \le \Sigma^{k - 1}_{i = 0}{N \choose i} \]
+</p>
+
+<p>
+In terms of vc-dimension,
+\[ m_{H}(N) \le \Sigma^{d_{VC}(H)}_{i = 0}{N \choose i} \]
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline66" class="outline-3">
+<h3 id="orgheadline66"><span class="section-number-3">7.2</span> VC-dimension and learning</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+\(d_{VC} is finite\) =&gt; g &isin; H will generalize$
+</p>
+
+<p>
+(refer to the learning diagram)
+</p>
+<ul class="org-ul">
+<li>independent of the learning algorithm</li>
+<li>independent of the input distribution</li>
+<li>independent of the target function</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline67" class="outline-3">
+<h3 id="orgheadline67"><span class="section-number-3">7.3</span> VC-dimension of the perceptron</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+\(d_{VC} = d+1 for a 'd' dimensional space\) (refer to slides for proof)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">7.4</span> Interpretting the vc dimension (using the perceptron example)</h3>
+<div class="outline-text-3" id="text-7-4">
+</div><div id="outline-container-orgheadline68" class="outline-4">
+<h4 id="orgheadline68"><span class="section-number-4">7.4.1</span> Degrees of freedom</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<p>
+Parameters of a model give us degrees of freedom in order to create multiple hypothesis. i.e we can vary
+these parameters, to get new outputs from the model.
+</p>
+
+<p>
+Number of parameters \(\Rightarrow\) analog degrees of freedom
+</p>
+
+<p>
+d<sub>VC</sub>{H} equivalent 'binary' degrees of freedom.
+</p>
+
+<p>
+d<sub>VC</sub> tells us how 'expressive' a model is. Inside a model (like
+perceptron or neural networks), there can be multiple parameters
+(analog df) that vary and but the output does not change. We care only
+about the variation seen in the output. Thus, if I have a model that
+has a d<sub>VC</sub> of 20, and someone else has a model of d<sub>VC</sub> of 30, it means
+they have more degrees of freedom.
+</p>
+
+<p>
+For the perceptron hypothesis set, we noticed that the vc-dimension is 'd+1'.
+What does this mean?
+</p>
+
+<p>
+Well, the number of parameters in the perceptron model is d+1 (namely
+w<sub>0</sub>, w<sub>1</sub>, &#x2026; w<sub>d</sub>). In this case, we have v<sub>DC</sub> = number of parameters.
+</p>
+
+<p>
+If we have a model that has redundant parameters, the v<sub>DC</sub> will be
+smaller than the number of parameters. (See slides for example)
+vc-dimension is a quantity that gives us the <i>effective</i> degrees of
+freedom.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69"><span class="section-number-4">7.4.2</span> Number of data points needed</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<p>
+How does value of v<sub>DC</sub> affect the number of examples needed?
+</p>
+
+<p>
+The VC Inequality,
+</p>
+
+<p>
+\[ P[|E_{in} - E_{out}| > \epsilon] \le \underbrace{4.m_{H}(2N).e^{-\frac{1}{8}.\epsilon^{2}.N}}_{\delta} \]
+</p>
+
+<p>
+If we want certain &epsilon; and &delta;, how does N depend on d<sub>VC</sub>?
+</p>
+
+<p>
+Lets look at N<sup>d</sup>.e<sup>-N</sup>. (See slides for details) This curve starts
+with the powerful polynomial but is eventually killed by the negative
+exponential.
+</p>
+
+<p>
+Looking the curves,
+</p>
+
+<p>
+\[ N \propto v_{DC} \]
+</p>
+
+<p>
+<i>A practical observation here is that the actual quantity that we are
+trying to bound, follows the same monotonicity as the bound.</i>
+i.e, bigger d<sub>VC</sub>, the more the examples we need.
+</p>
+
+<p>
+This initially didn't make too much sense to me, but the professor
+explains it very nicely with an example.
+</p>
+
+<p>
+Consider 2 people A, B who have 2 models, with 2 vc dimensions, and
+each measure their performance.  A's performance is bounded by a<sub>1</sub>,
+and B's performance is bounded by b<sub>2</sub> where \(a_1 > b_2\). These are the
+bounds. The actual performance, of A, B need not follow the same
+monotonicity as the bounds. i.e the performance p<sub>A</sub> can be &lt; p<sub>B</sub>.  The
+practical observation says this is not the case. The performance also
+follows the same monotonicity.
+</p>
+
+<p>
+Rule of thumb for getting 'reasonable' generalization:
+</p>
+
+<p>
+\[ N \ge 10.v_{DC} \]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline71" class="outline-3">
+<h3 id="orgheadline71"><span class="section-number-3">7.5</span> Rearranging things</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+The VC Inequality,
+</p>
+
+<p>
+\[ P[|E_{in} - E_{out}| > \epsilon] \le \underbrace{4.m_{H}(2N).e^{-\frac{1}{8}.\epsilon^{2}.N}}_{\delta} \]
+</p>
+
+<p>
+Getting &epsilon; in terms of &delta;:
+Given a reliability of &delta;, what tolerance &epsilon; can we guarentee?
+</p>
+
+<p>
+\[ \delta = 4m_H(2N).e^{-\frac{1}{8}\epsilon^2} \]
+\[ \epsilon = \underbrace{
+\sqrt{\frac{8}{N}\ln\frac{4m_{H}(2N)}{\delta}}
+}_{\Omega} \]
+</p>
+
+<p>
+Bigger the vc dimension, worse the guarantee on generalization. More
+the number of examples, better the &Omega;.
+</p>
+
+<p>
+Thus, with probability &gt; 1 - &delta;, $|E<sub>in</sub> - E<sub>out</sub>| &le; &Omega;(N, H, &delta;)
+</p>
+
+<p>
+Generalization bound,
+With probability &ge; 1 - &delta;,
+</p>
+
+<p>
+E<sub>out</sub> - E<sub>in</sub> &le; &Omega; (Invariably, E<sub>in</sub> is smaller than E<sub>out</sub>)
+</p>
+
+<p>
+This quantity is known as the <i>generalization error</i>.
+</p>
+
+<p>
+Rearranging, we have
+With probability &ge; 1 - &delta;,
+</p>
+
+<p>
+\[ E_{out} \le \Omega + \E_{in} \]
+</p>
+
+<p>
+Interesting, we can see that E<sub>out</sub> is bounded by 2 quantities we
+know. E<sub>in</sub> and &Omega;. 
+</p>
+
+<p>
+Furthermore, E<sub>in</sub> can be minimized with a 'bigger' hypothesis set,
+but &Omega; goes up! So its a tradeoff!! We'll derive regularization
+based on this quantity.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline79" class="outline-2">
+<h2 id="orgheadline79"><span class="section-number-2">8</span> 8 - Bias-Variance Tradeoff</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Stand-alone theory. Different angle on generalization.
+</p>
+</div>
+<div id="outline-container-orgheadline73" class="outline-3">
+<h3 id="orgheadline73"><span class="section-number-3">8.1</span> Approximation-generalization tradeoff</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Small E<sub>out</sub>: good approximation of f.
+</p>
+
+<p>
+More complex H &rArr; better chance of approximating f.
+</p>
+
+<p>
+Less complex H &rArr; better chance of generalizing out of sample.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline74" class="outline-3">
+<h3 id="orgheadline74"><span class="section-number-3">8.2</span> Quantifying this trade-off</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+One approach was the vc-analysis,
+</p>
+
+<p>
+\[ E_{out} \le E_{in} + \Omega \]
+</p>
+
+<p>
+Bias-variance analyis is another way of decomposing E<sub>out</sub> into
+</p>
+
+<ol class="org-ol">
+<li>How well H can approximate f. (This is overall! Not in-sample approximation as done in vc analysis)</li>
+<li>How well can we zoom in on a good h &isin; H</li>
+</ol>
+
+<p>
+Our analysis applies to real-valued targets and uses squared error.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline75" class="outline-3">
+<h3 id="orgheadline75"><span class="section-number-3">8.3</span> Start with E<sub>out</sub></h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+See slides for the full derivation, but here is the basic idea.
+</p>
+
+<p>
+\[ E_{out}(g^{(D)}) = E_{x}[ (g^{(D)}(x) - f(x))^2 ] \]
+</p>
+
+<p>
+We'd like to get rid of the dependency on the dataset D,
+</p>
+
+<p>
+\[ E_D[E_{out}(g^{(D)}] = E_{D}[E_{x}[ (g^{(D)}(x) - f(x))^2 ]] \]
+</p>
+
+<p>
+switch the order of E's
+</p>
+
+<p>
+\(E_{x}[\underbrace{E_{D}[(g^{(D)}(x) - f(x))^2]}_{inner-expectation}]\)
+</p>
+
+<p>
+Now, let's focus on the inner-expectation.
+</p>
+
+<p>
+The averate hypothesis,
+</p>
+
+<p>
+To evaluate the inner-expectation, 
+</p>
+
+<p>
+we define an 'average' hypothesis
+</p>
+
+<p>
+\[ \bar{g}(x) = E_{D}[g^{D}(x)] \]
+</p>
+
+<p>
+Imagine you have many data sets D<sub>1</sub>, D<sub>2</sub> &#x2026; D<sub>k</sub>, \(\bar{g}(x)\) is
+just the average hypothesis we get considering all of these datasets.
+</p>
+
+<p>
+add and subract \(\bar{g}(x)\) to inner-expectation, group and simplify, (see slides for details)
+</p>
+
+<p>
+E<sub>D</sub>[((g<sup>(D)</sup>(x) - \bar{g}(x)) + (\bar{g}(x) - f(x)))<sup>2</sup>]
+</p>
+
+<p>
+we get, 
+</p>
+
+<p>
+\[ E_{D}[(g^{D}(x) - \bar{g}(x))^{2}] + (\bar{g}(x) - f(x))^2 \]
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline76" class="outline-3">
+<h3 id="orgheadline76"><span class="section-number-3">8.4</span> Bias and Variance</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+\[ \underbrace{E_{D}[(g^{D}(x) - \bar{g}(x))^{2}]}_{var(x)} + \underbrace{(\bar{g}(x) - f(x))^2}_{bias(x)} \]
+</p>
+
+<p>
+Intuitive idea, 
+</p>
+
+<p>
+Bias: How far is the 'average' hypothesis of the set (which is the
+best hypothesis), from the target function.
+</p>
+
+<p>
+Variance: How far is the actual hypothesis we found, from this average hypothesis.
+</p>
+
+<p>
+Therefore,
+</p>
+
+<p>
+E<sub>D</sub>[E<sub>out</sub>(g<sup>D</sup>)] = E<sub>x</sub>[bias(x) + var(x)]
+                  = bias + var
+</p>
+
+<p>
+What's the tradeoff?
+</p>
+
+<p>
+Well, if we have a very complicated hypothesis set, the variance is high. (hard to find the correct hypothesis)
+If we have a small hypothesis set, bias is high. (it may not have the actual target function)
+</p>
+
+<p>
+There is a very nice example in the slides for understanding bias and variance. (the sinusoid example!)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline77" class="outline-3">
+<h3 id="orgheadline77"><span class="section-number-3">8.5</span> Lesson learned</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+Match 'model complexity' to the data resources you have, not to the <b>target complexity</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline78" class="outline-3">
+<h3 id="orgheadline78"><span class="section-number-3">8.6</span> Learning curves (expected E<sub>out</sub> and E<sub>in</sub>)</h3>
+<div class="outline-text-3" id="text-8-6">
+<p>
+Data set D of size N
+Expected out-of-sample error E<sub>D</sub>[E<sub>out</sub>(g<sup>(D)</sup>)]
+Expected in-sample error E<sub>D</sub>[E<sub>in</sub>(g<sup>(D)</sup>)]
+</p>
+
+<p>
+How do they vary with N?
+See slides for details.
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddharth subramaniyam</p>
-<p class="date">Created: 2016-10-11 Tue 16:02</p>
+<p class="date">Created: 2016-10-24 Mon 00:25</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
