@@ -893,3 +893,7 @@ Expected in-sample error E_{D}[E_{in}(g^{(D)})]
 
 How do they vary with N?
 See slides for details.
+* 9 - Linear Model 2
+* 10 - Neural Networks
+** Questions
+- 1st layer is real valued (perceptron) rest are always binary?
