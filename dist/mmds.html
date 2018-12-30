@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-30 Sun 12:10 -->
+<!-- 2018-12-30 Sun 13:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mining of massive data sets course notes</title>
@@ -240,121 +240,121 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org81176ac">1. Week 1 Map Reduce Paradigm</a>
+<li><a href="#orgbfbf241">1. Week 1 Map Reduce Paradigm</a>
 <ul>
-<li><a href="#org89f9331">1.1. MapReduce Programming Model:</a></li>
-<li><a href="#org87fe548">1.2. Scheduling and Data Flow</a>
+<li><a href="#org4773c55">1.1. MapReduce Programming Model:</a></li>
+<li><a href="#org62dec8f">1.2. Scheduling and Data Flow</a>
 <ul>
-<li><a href="#orgcff843e">1.2.1. Number of Map And Reduce tasks required per job</a></li>
+<li><a href="#orge05707f">1.2.1. Number of Map And Reduce tasks required per job</a></li>
 </ul>
 </li>
-<li><a href="#orgb309b22">1.3. Refinements</a>
+<li><a href="#orgb83d96a">1.3. Refinements</a>
 <ul>
-<li><a href="#orgc6550db">1.3.1. Combiners</a></li>
-<li><a href="#orgd8d4c28">1.3.2. Partition Function</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org243e8ec">2. Week 1 Analysis of large graphs</a>
-<ul>
-<li><a href="#orgda48cc1">2.1. Link Analysis and Page Rank</a>
-<ul>
-<li><a href="#org43fe2d0">2.1.1. Mathematical Formulation for the Page Rank algorithm</a></li>
-<li><a href="#org36f7a72">2.1.2. How do we really compute page rank in web-scale graphs??</a></li>
+<li><a href="#orgb854865">1.3.1. Combiners</a></li>
+<li><a href="#org3d01c48">1.3.2. Partition Function</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb827003">3. Week 2 Similar Sets LSH</a>
+<li><a href="#org02fa957">2. Week 1 Analysis of large graphs</a>
 <ul>
-<li><a href="#org1a9ba2e">3.1. Finding Similar Sets</a>
+<li><a href="#org27c1907">2.1. Link Analysis and Page Rank</a>
 <ul>
-<li><a href="#org24010ce">3.1.1. Shingling</a></li>
-<li><a href="#org920d102">3.1.2. Minhashing</a></li>
-<li><a href="#orgc502b6d">3.1.3. LSH</a></li>
-<li><a href="#org38c8108">3.1.4. Applications of LSH</a></li>
+<li><a href="#org42a04b9">2.1.1. Mathematical Formulation for the Page Rank algorithm</a></li>
+<li><a href="#org6666068">2.1.2. How do we really compute page rank in web-scale graphs??</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgacb3d58">4. Week 2 K-Nearest neighbour learning</a></li>
-<li><a href="#org2480a2b">5. Week 2 Frequent Itemsets</a>
+<li><a href="#org966e6df">3. Week 2 Similar Sets LSH</a>
 <ul>
-<li><a href="#orgc4a0c85">5.1. Market-Basket Model:</a>
+<li><a href="#org857b3dc">3.1. Finding Similar Sets</a>
 <ul>
-<li><a href="#orgfbd9450">5.1.1. Introduction and applications</a></li>
-<li><a href="#org2023593">5.1.2. Association rules</a></li>
-<li><a href="#org062cd13">5.1.3. finding association rules</a></li>
-<li><a href="#orgb931220">5.1.4. A-priori algorithm</a></li>
-<li><a href="#orgcea24e9">5.1.5. Improvements to A-priori</a></li>
-<li><a href="#org100242c">5.1.6. All (or most) frequent itemsets in &lt;= 2 passes</a></li>
+<li><a href="#org1c29688">3.1.1. Shingling</a></li>
+<li><a href="#org065254d">3.1.2. Minhashing</a></li>
+<li><a href="#org9a3da52">3.1.3. LSH</a></li>
+<li><a href="#org59716b8">3.1.4. Applications of LSH</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org916c897">6. Week 3 Community Detection</a>
+<li><a href="#org2bb6112">4. Week 2 K-Nearest neighbour learning</a></li>
+<li><a href="#org166f63a">5. Week 2 Frequent Itemsets</a>
 <ul>
-<li><a href="#org440b4f6">6.1. Using Affiliation Graph Model and BIGCLAM</a>
+<li><a href="#org62eceea">5.1. Market-Basket Model:</a>
 <ul>
-<li><a href="#org6dc3bb8">6.1.1. AGM to BIGCLAM</a></li>
-</ul>
-</li>
-<li><a href="#org3f14850">6.2. What makes a good cluster?</a></li>
-<li><a href="#org8b22951">6.3. Spectral Graph Partitioning</a>
-<ul>
-<li><a href="#orgf073bff">6.3.1. Spectral Graph partitioning</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org524920d">7. Week 3 Streams</a>
-<ul>
-<li><a href="#org48ff241">7.1. The Stream Model</a>
-<ul>
-<li><a href="#orgfb8b0f5">7.1.1. Stream management system.</a></li>
-<li><a href="#org0fd964b">7.1.2. Sliding window</a></li>
-<li><a href="#org44f1ef5">7.1.3. Bloom filters</a></li>
-<li><a href="#org8d0af71">7.1.4. Sampling streams</a></li>
-<li><a href="#org4419559">7.1.5. Counting distinct elements</a></li>
+<li><a href="#orgd4808c7">5.1.1. Introduction and applications</a></li>
+<li><a href="#org70ec713">5.1.2. Association rules</a></li>
+<li><a href="#org505c9d2">5.1.3. finding association rules</a></li>
+<li><a href="#orgc8d53bb">5.1.4. A-priori algorithm</a></li>
+<li><a href="#org645bd20">5.1.5. Improvements to A-priori</a></li>
+<li><a href="#orgc5ac7d2">5.1.6. All (or most) frequent itemsets in &lt;= 2 passes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org411cef5">8. Week 5 Clustering</a>
+<li><a href="#org43cc390">6. Week 3 Community Detection</a>
 <ul>
-<li><a href="#org3507f15">8.1. Hierarchical clustering</a>
+<li><a href="#org7a5aeac">6.1. Using Affiliation Graph Model and BIGCLAM</a>
 <ul>
-<li><a href="#org62ecf38">8.1.1. Euclidean case</a></li>
-<li><a href="#orga7c7743">8.1.2. Non-Euclidean case</a></li>
-<li><a href="#orgc3fe211">8.1.3. When to stop clustering?</a></li>
+<li><a href="#orgb58b224">6.1.1. AGM to BIGCLAM</a></li>
 </ul>
 </li>
-<li><a href="#org620d98f">8.2. K-Means algorithm</a></li>
-<li><a href="#org2112610">8.3. Bradley-Fayed-Reina (BFR) algorithm</a>
+<li><a href="#orga0eeea6">6.2. What makes a good cluster?</a></li>
+<li><a href="#org93b95e7">6.3. Spectral Graph Partitioning</a>
 <ul>
-<li><a href="#org88c2029">8.3.1. Assumptions:</a></li>
-<li><a href="#orgd9c2aaa">8.3.2. Algorithm</a></li>
+<li><a href="#orgf37106b">6.3.1. Spectral Graph partitioning</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3f1523f">9. Week 7 LSH Improvements</a>
+<li><a href="#org12cd90f">7. Week 3 Streams</a>
 <ul>
-<li><a href="#org5d78cd3">9.1. LSH families of Hash functions</a>
+<li><a href="#org87b1e00">7.1. The Stream Model</a>
 <ul>
-<li><a href="#org105f8f3">9.1.1. Random Hyperplane family for cosine distance</a></li>
+<li><a href="#org0947347">7.1.1. Stream management system.</a></li>
+<li><a href="#orgf5da39a">7.1.2. Sliding window</a></li>
+<li><a href="#orgee20fca">7.1.3. Bloom filters</a></li>
+<li><a href="#org544f76f">7.1.4. Sampling streams</a></li>
+<li><a href="#org94eec21">7.1.5. Counting distinct elements</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org06ccc81">10. Week 7 More about link analysis</a></li>
+<li><a href="#org8d47175">8. Week 5 Clustering</a>
+<ul>
+<li><a href="#orga8f5217">8.1. Hierarchical clustering</a>
+<ul>
+<li><a href="#org2e444c1">8.1.1. Euclidean case</a></li>
+<li><a href="#org2bb0a40">8.1.2. Non-Euclidean case</a></li>
+<li><a href="#org4b4afea">8.1.3. When to stop clustering?</a></li>
+</ul>
+</li>
+<li><a href="#org21ea9db">8.2. K-Means algorithm</a></li>
+<li><a href="#orgcd96779">8.3. Bradley-Fayed-Reina (BFR) algorithm</a>
+<ul>
+<li><a href="#org0072859">8.3.1. Assumptions:</a></li>
+<li><a href="#org9c91e19">8.3.2. Algorithm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org50ce90b">9. Week 7 LSH Improvements</a>
+<ul>
+<li><a href="#orge8e3405">9.1. LSH families of Hash functions</a>
+<ul>
+<li><a href="#orgd9ec3bb">9.1.1. Random Hyperplane family for cosine distance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc0015d1">10. Week 7 More about link analysis</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org81176ac" class="outline-2">
-<h2 id="org81176ac"><span class="section-number-2">1</span> Week 1 Map Reduce Paradigm</h2>
+<div id="outline-container-orgbfbf241" class="outline-2">
+<h2 id="orgbfbf241"><span class="section-number-2">1</span> Week 1 Map Reduce Paradigm</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Whats so cool about this?
@@ -364,8 +364,8 @@ Handling node failures, complexities of distributed computing.
 </p>
 </div>
 
-<div id="outline-container-org89f9331" class="outline-3">
-<h3 id="org89f9331"><span class="section-number-3">1.1</span> MapReduce Programming Model:</h3>
+<div id="outline-container-org4773c55" class="outline-3">
+<h3 id="org4773c55"><span class="section-number-3">1.1</span> MapReduce Programming Model:</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Map -&gt; Group by Key -&gt; Reduce 
@@ -379,8 +379,8 @@ Reduce: Do some transformation and return result for the (key, [v1 ,v2 &#x2026;]
 </div>
 </div>
 
-<div id="outline-container-org87fe548" class="outline-3">
-<h3 id="org87fe548"><span class="section-number-3">1.2</span> Scheduling and Data Flow</h3>
+<div id="outline-container-org62dec8f" class="outline-3">
+<h3 id="org62dec8f"><span class="section-number-3">1.2</span> Scheduling and Data Flow</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 MR system partitions the input data and stores them on multiple nodes.
@@ -399,8 +399,8 @@ Master is typically not replicated, so when it fails, the task is aborted.
 </p>
 </div>
 
-<div id="outline-container-orgcff843e" class="outline-4">
-<h4 id="orgcff843e"><span class="section-number-4">1.2.1</span> Number of Map And Reduce tasks required per job</h4>
+<div id="outline-container-orge05707f" class="outline-4">
+<h4 id="orge05707f"><span class="section-number-4">1.2.1</span> Number of Map And Reduce tasks required per job</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 M map tasks, R reduce tasks.
@@ -416,12 +416,12 @@ Multiple nodes do map and reduce tasks.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb309b22" class="outline-3">
-<h3 id="orgb309b22"><span class="section-number-3">1.3</span> Refinements</h3>
+<div id="outline-container-orgb83d96a" class="outline-3">
+<h3 id="orgb83d96a"><span class="section-number-3">1.3</span> Refinements</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orgc6550db" class="outline-4">
-<h4 id="orgc6550db"><span class="section-number-4">1.3.1</span> Combiners</h4>
+<div id="outline-container-orgb854865" class="outline-4">
+<h4 id="orgb854865"><span class="section-number-4">1.3.1</span> Combiners</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Between Mappers and Reducer.
@@ -440,8 +440,8 @@ and compute the average.
 </div>
 </div>
 
-<div id="outline-container-orgd8d4c28" class="outline-4">
-<h4 id="orgd8d4c28"><span class="section-number-4">1.3.2</span> Partition Function</h4>
+<div id="outline-container-org3d01c48" class="outline-4">
+<h4 id="org3d01c48"><span class="section-number-4">1.3.2</span> Partition Function</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 This is provided by the map reduce system.
@@ -452,12 +452,12 @@ However, sometimes its useful to override the default partition fn. (Check the h
 </div>
 </div>
 
-<div id="outline-container-org243e8ec" class="outline-2">
-<h2 id="org243e8ec"><span class="section-number-2">2</span> Week 1 Analysis of large graphs</h2>
+<div id="outline-container-org02fa957" class="outline-2">
+<h2 id="org02fa957"><span class="section-number-2">2</span> Week 1 Analysis of large graphs</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgda48cc1" class="outline-3">
-<h3 id="orgda48cc1"><span class="section-number-3">2.1</span> Link Analysis and Page Rank</h3>
+<div id="outline-container-org27c1907" class="outline-3">
+<h3 id="org27c1907"><span class="section-number-3">2.1</span> Link Analysis and Page Rank</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 We'll Analyze the webgraph as an example
@@ -473,12 +473,12 @@ These methods are called link analysis:
 </ul>
 </div>
 
-<div id="outline-container-org43fe2d0" class="outline-4">
-<h4 id="org43fe2d0"><span class="section-number-4">2.1.1</span> Mathematical Formulation for the Page Rank algorithm</h4>
+<div id="outline-container-org42a04b9" class="outline-4">
+<h4 id="org42a04b9"><span class="section-number-4">2.1.1</span> Mathematical Formulation for the Page Rank algorithm</h4>
 <div class="outline-text-4" id="text-2-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org2b4dee5"></a>Flow formulation<br />
+<li><a id="orgf54c0a4"></a>Flow formulation<br />
 <div class="outline-text-5" id="text-2-1-1-1">
 <p>
      Basic Idea:
@@ -509,7 +509,7 @@ But this methods requires solving a bunch of equations. Guassian Elimination wil
 </div>
 </li>
 
-<li><a id="org94a8d1b"></a>Matrix formulation<br />
+<li><a id="org3236cc0"></a>Matrix formulation<br />
 <div class="outline-text-5" id="text-2-1-1-2">
 <p>
 The above formulation can be rewritten as a eigen-vector formulation.
@@ -548,7 +548,7 @@ As there are N webpages.
 </div>
 </li>
 
-<li><a id="org77ff087"></a>Random Walk interpretation of Page Rank<br />
+<li><a id="org69077e1"></a>Random Walk interpretation of Page Rank<br />
 <div class="outline-text-5" id="text-2-1-1-3">
 <p>
 Another way to think about page rank is using the idea of a random surfer.
@@ -570,7 +570,7 @@ Thus r is the stationary distribution for the random walk.
 </div>
 
 <ol class="org-ol">
-<li><a id="org6adb0e3"></a><a href="https://www.youtube.com/watch?v=uvYTGEZQTEs&amp;list=PLANMHOrJaFxPMQCMYcYqwOCYlreFswAKP">Markov Processes</a><br />
+<li><a id="org5de587f"></a><a href="https://www.youtube.com/watch?v=uvYTGEZQTEs&amp;list=PLANMHOrJaFxPMQCMYcYqwOCYlreFswAKP">Markov Processes</a><br />
 <div class="outline-text-6" id="text-2-1-1-3-1">
 <p>
 Central idea from the theory:
@@ -592,7 +592,7 @@ states of a transition matrix, in which it impossible to exit a state after ente
 </li>
 
 
-<li><a id="orgf56cc38"></a>Google formulation of Page Rank<br />
+<li><a id="orgc761065"></a>Google formulation of Page Rank<br />
 <div class="outline-text-5" id="text-2-1-1-4">
 <p>
      we have our equation r<sub>j</sub><sup>(t+1)</sup> =  Mr<sub>j</sub><sup>t</sup>
@@ -638,8 +638,8 @@ Adding random teleportation provides these conditions.
 </ol>
 </div>
 
-<div id="outline-container-org36f7a72" class="outline-4">
-<h4 id="org36f7a72"><span class="section-number-4">2.1.2</span> How do we really compute page rank in web-scale graphs??</h4>
+<div id="outline-container-org6666068" class="outline-4">
+<h4 id="org6666068"><span class="section-number-4">2.1.2</span> How do we really compute page rank in web-scale graphs??</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 r<sub>(t+1)</sub> = Ar<sub>t</sub>
@@ -708,12 +708,12 @@ Awesomatic Algorithm:
 </div>
 </div>
 
-<div id="outline-container-orgb827003" class="outline-2">
-<h2 id="orgb827003"><span class="section-number-2">3</span> Week 2 Similar Sets LSH</h2>
+<div id="outline-container-org966e6df" class="outline-2">
+<h2 id="org966e6df"><span class="section-number-2">3</span> Week 2 Similar Sets LSH</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org1a9ba2e" class="outline-3">
-<h3 id="org1a9ba2e"><span class="section-number-3">3.1</span> Finding Similar Sets</h3>
+<div id="outline-container-org857b3dc" class="outline-3">
+<h3 id="org857b3dc"><span class="section-number-3">3.1</span> Finding Similar Sets</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We'll focus on document similar in web-scale as an example.
@@ -732,8 +732,8 @@ recommendations, plagiarism, entity resolution.
 </ol>
 </div>
 
-<div id="outline-container-org24010ce" class="outline-4">
-<h4 id="org24010ce"><span class="section-number-4">3.1.1</span> Shingling</h4>
+<div id="outline-container-org1c29688" class="outline-4">
+<h4 id="org1c29688"><span class="section-number-4">3.1.1</span> Shingling</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 k-shingle for a document is a set of k characters that appears in that document.
@@ -746,8 +746,8 @@ Shingles can be hashed to reduce storage bytes.
 </div>
 </div>
 
-<div id="outline-container-org920d102" class="outline-4">
-<h4 id="org920d102"><span class="section-number-4">3.1.2</span> Minhashing</h4>
+<div id="outline-container-org065254d" class="outline-4">
+<h4 id="org065254d"><span class="section-number-4">3.1.2</span> Minhashing</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
     This technique is used to uniquely represent each document by a vector.
@@ -794,7 +794,7 @@ given 2 columns, c1 and c2, p(h(c1) = h(c2)) = Sim(c1, c2)
 </div>
 
 <ol class="org-ol">
-<li><a id="org53dbf9e"></a>Similarity of signatures: <i>fraction of minhash fns for which h(c1) = h(c2)</i><br />
+<li><a id="orgdc756ab"></a>Similarity of signatures: <i>fraction of minhash fns for which h(c1) = h(c2)</i><br />
 <div class="outline-text-5" id="text-3-1-2-1">
 <p>
 The expected value of Sos is the jaccard similarity of the 2 columns!!
@@ -802,7 +802,7 @@ The expected value of Sos is the jaccard similarity of the 2 columns!!
 </div>
 </li>
 
-<li><a id="orgb26eb8a"></a>Permuting the rows<br />
+<li><a id="orgd6f923f"></a>Permuting the rows<br />
 <div class="outline-text-5" id="text-3-1-2-2">
 <p>
 Creating a permuted set of rows is expensive. For 1 billion rows, we'll need 1 billion entries
@@ -865,8 +865,8 @@ Algorithm:
 
 
 
-<div id="outline-container-orgc502b6d" class="outline-4">
-<h4 id="orgc502b6d"><span class="section-number-4">3.1.3</span> LSH</h4>
+<div id="outline-container-org9a3da52" class="outline-4">
+<h4 id="org9a3da52"><span class="section-number-4">3.1.3</span> LSH</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <p>
     Basic idea:
@@ -913,12 +913,12 @@ This is a step function. We can tune b and r, based on the desired 't'.
 </div>
 </div>
 
-<div id="outline-container-org38c8108" class="outline-4">
-<h4 id="org38c8108"><span class="section-number-4">3.1.4</span> Applications of LSH</h4>
+<div id="outline-container-org59716b8" class="outline-4">
+<h4 id="org59716b8"><span class="section-number-4">3.1.4</span> Applications of LSH</h4>
 <div class="outline-text-4" id="text-3-1-4">
 </div>
 <ol class="org-ol">
-<li><a id="orgb1a9a90"></a>Entity Resolution<br />
+<li><a id="org1ec367f"></a>Entity Resolution<br />
 <div class="outline-text-5" id="text-3-1-4-1">
 <p>
 misspellings, nicknames, change of address, phone numbers make entity resolution pretty interesting.
@@ -927,7 +927,7 @@ Pretty cool application explained, in which jeff helped find similar records for
 </div>
 </li>
 
-<li><a id="orgfb5b4a1"></a>Fingerprint matching<br />
+<li><a id="orgd8bccce"></a>Fingerprint matching<br />
 <div class="outline-text-5" id="text-3-1-4-2">
 <p>
      This again uses lsh, the nice trick in this one is the bucketing technique.
@@ -938,7 +938,7 @@ numbers workout.
 </div>
 </li>
 
-<li><a id="orge87314d"></a>Duplicate news articles<br />
+<li><a id="org78a7d78"></a>Duplicate news articles<br />
 <div class="outline-text-5" id="text-3-1-4-3">
 <p>
      This uses a nice shingling technique. Stop words are used to get shingles. Idea is
@@ -952,8 +952,8 @@ articles do.
 </div>
 </div>
 
-<div id="outline-container-orgacb3d58" class="outline-2">
-<h2 id="orgacb3d58"><span class="section-number-2">4</span> Week 2 K-Nearest neighbour learning</h2>
+<div id="outline-container-org2bb6112" class="outline-2">
+<h2 id="org2bb6112"><span class="section-number-2">4</span> Week 2 K-Nearest neighbour learning</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Supervised learning technique. y = f(x). predict y, for given features vector x.
@@ -973,19 +973,19 @@ near the query fn. how do you look at only a few points to figure out the k? LSH
 </p>
 </div>
 </div>
-<div id="outline-container-org2480a2b" class="outline-2">
-<h2 id="org2480a2b"><span class="section-number-2">5</span> Week 2 Frequent Itemsets</h2>
+<div id="outline-container-org166f63a" class="outline-2">
+<h2 id="org166f63a"><span class="section-number-2">5</span> Week 2 Frequent Itemsets</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Frequent Itemsets are items that appear together.
 </p>
 </div>
-<div id="outline-container-orgc4a0c85" class="outline-3">
-<h3 id="orgc4a0c85"><span class="section-number-3">5.1</span> Market-Basket Model:</h3>
+<div id="outline-container-org62eceea" class="outline-3">
+<h3 id="org62eceea"><span class="section-number-3">5.1</span> Market-Basket Model:</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgfbd9450" class="outline-4">
-<h4 id="orgfbd9450"><span class="section-number-4">5.1.1</span> Introduction and applications</h4>
+<div id="outline-container-orgd4808c7" class="outline-4">
+<h4 id="orgd4808c7"><span class="section-number-4">5.1.1</span> Introduction and applications</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Baskets, Items: stuff that are in a basket.
@@ -1006,8 +1006,8 @@ Note: For good performance, there should be few items in a basket. (usually <b>q
 </p>
 </div>
 </div>
-<div id="outline-container-org2023593" class="outline-4">
-<h4 id="org2023593"><span class="section-number-4">5.1.2</span> Association rules</h4>
+<div id="outline-container-org70ec713" class="outline-4">
+<h4 id="org70ec713"><span class="section-number-4">5.1.2</span> Association rules</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 If a basket contains {i<sub>1</sub>, i<sub>2&#x2026;i</sub><sub>k</sub>} -&gt; j, it implies it likely contains j.
@@ -1020,8 +1020,8 @@ fraction of baskets that contain all of i<sub>1</sub>-i<sub>k</sub> and j vs tho
 </p>
 </div>
 </div>
-<div id="outline-container-org062cd13" class="outline-4">
-<h4 id="org062cd13"><span class="section-number-4">5.1.3</span> finding association rules</h4>
+<div id="outline-container-org505c9d2" class="outline-4">
+<h4 id="org505c9d2"><span class="section-number-4">5.1.3</span> finding association rules</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 question: <i><b>Find all association rules, with support &gt;= s and confidence &gt;= c.</b></i>
@@ -1039,8 +1039,8 @@ is atleast c.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb931220" class="outline-4">
-<h4 id="orgb931220"><span class="section-number-4">5.1.4</span> A-priori algorithm</h4>
+<div id="outline-container-orgc8d53bb" class="outline-4">
+<h4 id="orgc8d53bb"><span class="section-number-4">5.1.4</span> A-priori algorithm</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <p>
 2 pass algorithm for finding frequent itemsets.
@@ -1062,12 +1062,12 @@ which the item appears)
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcea24e9" class="outline-4">
-<h4 id="orgcea24e9"><span class="section-number-4">5.1.5</span> Improvements to A-priori</h4>
+<div id="outline-container-org645bd20" class="outline-4">
+<h4 id="org645bd20"><span class="section-number-4">5.1.5</span> Improvements to A-priori</h4>
 <div class="outline-text-4" id="text-5-1-5">
 </div>
 <ol class="org-ol">
-<li><a id="org735030c"></a>Part-Chen-Yu-Algorithm<br />
+<li><a id="orgf61e5c2"></a>Part-Chen-Yu-Algorithm<br />
 <div class="outline-text-5" id="text-5-1-5-1">
 <ul class="org-ul">
 <li>In the first pass of a-priori, hash each pair to a bucket and keep (bucket, count) pairs</li>
@@ -1080,7 +1080,7 @@ in memory.
 </ul>
 </div>
 </li>
-<li><a id="org437faa6"></a>Multistage algorithm<br />
+<li><a id="org99d314e"></a>Multistage algorithm<br />
 <div class="outline-text-5" id="text-5-1-5-2">
 <ul class="org-ul">
 <li>Add one more pass. create a middle pass that rehashes all the pairs (using diff hash fn)</li>
@@ -1090,7 +1090,7 @@ in the first pass whose bucket counts were &gt; s.
 </p>
 </div>
 </li>
-<li><a id="org5e132ef"></a>Multihash<br />
+<li><a id="orgcbc76e5"></a>Multihash<br />
 <div class="outline-text-5" id="text-5-1-5-3">
 <ul class="org-ul">
 <li>like pcy, but use multiple hashes in stage 1.</li>
@@ -1100,12 +1100,12 @@ in the first pass whose bucket counts were &gt; s.
 </ol>
 </div>
 
-<div id="outline-container-org100242c" class="outline-4">
-<h4 id="org100242c"><span class="section-number-4">5.1.6</span> All (or most) frequent itemsets in &lt;= 2 passes</h4>
+<div id="outline-container-orgc5ac7d2" class="outline-4">
+<h4 id="orgc5ac7d2"><span class="section-number-4">5.1.6</span> All (or most) frequent itemsets in &lt;= 2 passes</h4>
 <div class="outline-text-4" id="text-5-1-6">
 </div>
 <ol class="org-ol">
-<li><a id="orgbbec3c4"></a>SON algorithm<br />
+<li><a id="org2f3c51e"></a>SON algorithm<br />
 <div class="outline-text-5" id="text-5-1-6-1">
 <ul class="org-ul">
 <li>pick random subset of all baskets that fit in memory.</li>
@@ -1115,7 +1115,7 @@ in the first pass whose bucket counts were &gt; s.
 </ul>
 </div>
 </li>
-<li><a id="org5507b25"></a>Toivonens algorithm<br />
+<li><a id="orgd49ad80"></a>Toivonens algorithm<br />
 <div class="outline-text-5" id="text-5-1-6-2">
 <ul class="org-ul">
 <li>pick random subset of all baskets that fit in memory.</li>
@@ -1142,15 +1142,15 @@ start over again with another sample.
 </div>
 </div>
 
-<div id="outline-container-org916c897" class="outline-2">
-<h2 id="org916c897"><span class="section-number-2">6</span> Week 3 Community Detection</h2>
+<div id="outline-container-org43cc390" class="outline-2">
+<h2 id="org43cc390"><span class="section-number-2">6</span> Week 3 Community Detection</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Detect communities in a huge ass graph.
 </p>
 </div>
-<div id="outline-container-org440b4f6" class="outline-3">
-<h3 id="org440b4f6"><span class="section-number-3">6.1</span> Using Affiliation Graph Model and BIGCLAM</h3>
+<div id="outline-container-org7a5aeac" class="outline-3">
+<h3 id="org7a5aeac"><span class="section-number-3">6.1</span> Using Affiliation Graph Model and BIGCLAM</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
   Generative model for networkds
@@ -1164,8 +1164,8 @@ for a pair of nodes u, v.
 This model helps us generate a network.
 </p>
 </div>
-<div id="outline-container-org6dc3bb8" class="outline-4">
-<h4 id="org6dc3bb8"><span class="section-number-4">6.1.1</span> AGM to BIGCLAM</h4>
+<div id="outline-container-orgb58b224" class="outline-4">
+<h4 id="orgb58b224"><span class="section-number-4">6.1.1</span> AGM to BIGCLAM</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
    Relax the agm model, each membership between node u and community a will have a strength F<sub>ua</sub>.
@@ -1177,8 +1177,8 @@ We have to find this matrix. (check slides for details)
 </div>
 </div>
 </div>
-<div id="outline-container-org3f14850" class="outline-3">
-<h3 id="org3f14850"><span class="section-number-3">6.2</span> What makes a good cluster?</h3>
+<div id="outline-container-orga0eeea6" class="outline-3">
+<h3 id="orga0eeea6"><span class="section-number-3">6.2</span> What makes a good cluster?</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
    Divide vertices into sets such that there are very few cross cluster connections
@@ -1195,8 +1195,8 @@ Vol(A) = &sum;<sub>(i &isin; A)</sub>d<sub>i</sub>. Lower the conductance, the b
 </p>
 </div>
 </div>
-<div id="outline-container-org8b22951" class="outline-3">
-<h3 id="org8b22951"><span class="section-number-3">6.3</span> Spectral Graph Partitioning</h3>
+<div id="outline-container-org93b95e7" class="outline-3">
+<h3 id="org93b95e7"><span class="section-number-3">6.3</span> Spectral Graph Partitioning</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
    Find clusters/communities in networks.
@@ -1227,8 +1227,8 @@ Graph Laplacian Matrix L = D - A
 n * n symmetrix matrix.
 </p>
 </div>
-<div id="outline-container-orgf073bff" class="outline-4">
-<h4 id="orgf073bff"><span class="section-number-4">6.3.1</span> Spectral Graph partitioning</h4>
+<div id="outline-container-orgf37106b" class="outline-4">
+<h4 id="orgf37106b"><span class="section-number-4">6.3.1</span> Spectral Graph partitioning</h4>
 <div class="outline-text-4" id="text-6-3-1">
 <p>
 Fact:
@@ -1240,16 +1240,16 @@ For symmetric matrix M, second smallest eigen value is
 </div>
 </div>
 
-<div id="outline-container-org524920d" class="outline-2">
-<h2 id="org524920d"><span class="section-number-2">7</span> Week 3 Streams</h2>
+<div id="outline-container-org12cd90f" class="outline-2">
+<h2 id="org12cd90f"><span class="section-number-2">7</span> Week 3 Streams</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Stream management is differenet from data management (from databases) in many ways.
 The input rate cannot be controlled, dont have all the time to do some computation.
 </p>
 </div>
-<div id="outline-container-org48ff241" class="outline-3">
-<h3 id="org48ff241"><span class="section-number-3">7.1</span> The Stream Model</h3>
+<div id="outline-container-org87b1e00" class="outline-3">
+<h3 id="org87b1e00"><span class="section-number-3">7.1</span> The Stream Model</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 Two forms of quries:
@@ -1270,8 +1270,8 @@ One time queries.</li>
 ex) what is the max value seen so far in the stream.
 </p>
 </div>
-<div id="outline-container-orgfb8b0f5" class="outline-4">
-<h4 id="orgfb8b0f5"><span class="section-number-4">7.1.1</span> Stream management system.</h4>
+<div id="outline-container-org0947347" class="outline-4">
+<h4 id="org0947347"><span class="section-number-4">7.1.1</span> Stream management system.</h4>
 <div class="outline-text-4" id="text-7-1-1">
 <p>
 Consists of
@@ -1283,8 +1283,8 @@ in a way that supports fast querying.
 </p>
 </div>
 </div>
-<div id="outline-container-org0fd964b" class="outline-4">
-<h4 id="org0fd964b"><span class="section-number-4">7.1.2</span> Sliding window</h4>
+<div id="outline-container-orgf5da39a" class="outline-4">
+<h4 id="orgf5da39a"><span class="section-number-4">7.1.2</span> Sliding window</h4>
 <div class="outline-text-4" id="text-7-1-2">
 <p>
 Useful model of stream processing in which queries are about stuff in a window.
@@ -1293,14 +1293,14 @@ ex) averages. (avg of elements in the window)
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="org8fc5620"></a>Counting 1's (when N does not fit in memory)<br />
+<li><a id="org667c076"></a>Counting 1's (when N does not fit in memory)<br />
 <div class="outline-text-5" id="text-7-1-2-1">
 <p>
 Count the number of 1s for any k &lt; N.
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="orgd35d492"></a>Algorithm that doesn't quite work:<br />
+<li><a id="org2359360"></a>Algorithm that doesn't quite work:<br />
 <div class="outline-text-6" id="text-7-1-2-1-1">
 <ul class="org-ul">
 <li>Create blocks of 2, 4, 8, 16 &#x2026; upto log<sub>2</sub>(N) looking backwards.</li>
@@ -1315,7 +1315,7 @@ or a larger block begins to its right.
 </div>
 
 <ol class="org-ol">
-<li><a id="org1cad518"></a>Whats good in this algorithm?<br />
+<li><a id="org68966bb"></a>Whats good in this algorithm?<br />
 <div class="outline-text-7" id="text-7-1-2-1-1-1">
 <ul class="org-ul">
 <li>O(log<sup>2</sup> N) bits.
@@ -1327,7 +1327,7 @@ or a larger block begins to its right.
 </ul>
 </div>
 </li>
-<li><a id="org8329100"></a>Whats not good?<br />
+<li><a id="org53b0809"></a>Whats not good?<br />
 <div class="outline-text-7" id="text-7-1-2-1-1-2">
 <ul class="org-ul">
 <li>If all the ones are in the 'unknown area', error is unbounded.</li>
@@ -1337,7 +1337,7 @@ or a larger block begins to its right.
 </ol>
 </li>
 
-<li><a id="orgfb75882"></a>DGIM method (rajeev motwani was one of them)<br />
+<li><a id="org112868e"></a>DGIM method (rajeev motwani was one of them)<br />
 <div class="outline-text-6" id="text-7-1-2-1-2">
 <p>
       Whats different in this?
@@ -1361,8 +1361,8 @@ Look at slides for algorithm.
 </ol>
 </div>
 
-<div id="outline-container-org44f1ef5" class="outline-4">
-<h4 id="org44f1ef5"><span class="section-number-4">7.1.3</span> Bloom filters</h4>
+<div id="outline-container-orgee20fca" class="outline-4">
+<h4 id="orgee20fca"><span class="section-number-4">7.1.3</span> Bloom filters</h4>
 <div class="outline-text-4" id="text-7-1-3">
 <ul class="org-ul">
 <li>filter streams only if the stream item is in someother list of items.</li>
@@ -1377,8 +1377,8 @@ array index returned by each of the hash fns.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8d0af71" class="outline-4">
-<h4 id="org8d0af71"><span class="section-number-4">7.1.4</span> Sampling streams</h4>
+<div id="outline-container-org544f76f" class="outline-4">
+<h4 id="org544f76f"><span class="section-number-4">7.1.4</span> Sampling streams</h4>
 <div class="outline-text-4" id="text-7-1-4">
 <ul class="org-ul">
 <li>sample by value, not by position in stream.</li>
@@ -1389,8 +1389,8 @@ is picked in the sample)
 </p>
 </div>
 </div>
-<div id="outline-container-org4419559" class="outline-4">
-<h4 id="org4419559"><span class="section-number-4">7.1.5</span> Counting distinct elements</h4>
+<div id="outline-container-org94eec21" class="outline-4">
+<h4 id="org94eec21"><span class="section-number-4">7.1.5</span> Counting distinct elements</h4>
 <div class="outline-text-4" id="text-7-1-5">
 <p>
     count all distinct elements in a stream.
@@ -1399,7 +1399,7 @@ if it has been seen before.
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="org9e80357"></a>flajolet-martin algorithm<br />
+<li><a id="org3c42185"></a>flajolet-martin algorithm<br />
 <div class="outline-text-5" id="text-7-1-5-1">
 <p>
      This algorithm is used to estimate the distinct elements in a stream.
@@ -1411,7 +1411,7 @@ estimate = 2<sup>R</sup>.
 </p>
 </div>
 </li>
-<li><a id="org0c7f75b"></a>AMS method.<br />
+<li><a id="orgc1e5560"></a>AMS method.<br />
 <div class="outline-text-5" id="text-7-1-5-2">
 <p>
 Used for finding any moment, gives unbiased estimate.
@@ -1424,12 +1424,12 @@ Based on multiple random variables.
 </div>
 </div>
 
-<div id="outline-container-org411cef5" class="outline-2">
-<h2 id="org411cef5"><span class="section-number-2">8</span> Week 5 Clustering</h2>
+<div id="outline-container-org8d47175" class="outline-2">
+<h2 id="org8d47175"><span class="section-number-2">8</span> Week 5 Clustering</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org3507f15" class="outline-3">
-<h3 id="org3507f15"><span class="section-number-3">8.1</span> Hierarchical clustering</h3>
+<div id="outline-container-orga8f5217" class="outline-3">
+<h3 id="orga8f5217"><span class="section-number-3">8.1</span> Hierarchical clustering</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
    Repeatedly combine two nearest clusters.
@@ -1437,16 +1437,16 @@ Start at each point as a cluster.
 Notion of near? 
 </p>
 </div>
-<div id="outline-container-org62ecf38" class="outline-4">
-<h4 id="org62ecf38"><span class="section-number-4">8.1.1</span> Euclidean case</h4>
+<div id="outline-container-org2e444c1" class="outline-4">
+<h4 id="org2e444c1"><span class="section-number-4">8.1.1</span> Euclidean case</h4>
 <div class="outline-text-4" id="text-8-1-1">
 <p>
 Centroid: avg of all points
 </p>
 </div>
 </div>
-<div id="outline-container-orga7c7743" class="outline-4">
-<h4 id="orga7c7743"><span class="section-number-4">8.1.2</span> Non-Euclidean case</h4>
+<div id="outline-container-org2bb0a40" class="outline-4">
+<h4 id="org2bb0a40"><span class="section-number-4">8.1.2</span> Non-Euclidean case</h4>
 <div class="outline-text-4" id="text-8-1-2">
 <p>
 Clustroid
@@ -1463,8 +1463,8 @@ Pick one based on application
 </p>
 </div>
 </div>
-<div id="outline-container-orgc3fe211" class="outline-4">
-<h4 id="orgc3fe211"><span class="section-number-4">8.1.3</span> When to stop clustering?</h4>
+<div id="outline-container-org4b4afea" class="outline-4">
+<h4 id="org4b4afea"><span class="section-number-4">8.1.3</span> When to stop clustering?</h4>
 <div class="outline-text-4" id="text-8-1-3">
 <p>
 Threshold on diameter of cluster. (cohesion)
@@ -1483,8 +1483,8 @@ we can make it O(N<sup>2</sup> log N). not suitable for big datasets that do not
 </div>
 </div>
 </div>
-<div id="outline-container-org620d98f" class="outline-3">
-<h3 id="org620d98f"><span class="section-number-3">8.2</span> K-Means algorithm</h3>
+<div id="outline-container-org21ea9db" class="outline-3">
+<h3 id="org21ea9db"><span class="section-number-3">8.2</span> K-Means algorithm</h3>
 <div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li>Pick K points randomly as our cluster centers.</li>
@@ -1498,8 +1498,8 @@ K-means takes a long time to converge.
 </p>
 </div>
 </div>
-<div id="outline-container-org2112610" class="outline-3">
-<h3 id="org2112610"><span class="section-number-3">8.3</span> Bradley-Fayed-Reina (BFR) algorithm</h3>
+<div id="outline-container-orgcd96779" class="outline-3">
+<h3 id="orgcd96779"><span class="section-number-3">8.3</span> Bradley-Fayed-Reina (BFR) algorithm</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
    Optimized for large datasets that dont fit in memory.
@@ -1507,16 +1507,16 @@ Scan dataset once, to cluster points.
 Points are loaded in chunks into the memory, and summarized by some simple statitics.
 </p>
 </div>
-<div id="outline-container-org88c2029" class="outline-4">
-<h4 id="org88c2029"><span class="section-number-4">8.3.1</span> Assumptions:</h4>
+<div id="outline-container-org0072859" class="outline-4">
+<h4 id="org0072859"><span class="section-number-4">8.3.1</span> Assumptions:</h4>
 <div class="outline-text-4" id="text-8-3-1">
 <p>
 Points are normally distributed in euclidean space.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd9c2aaa" class="outline-4">
-<h4 id="orgd9c2aaa"><span class="section-number-4">8.3.2</span> Algorithm</h4>
+<div id="outline-container-org9c91e19" class="outline-4">
+<h4 id="org9c91e19"><span class="section-number-4">8.3.2</span> Algorithm</h4>
 <div class="outline-text-4" id="text-8-3-2">
 <p>
     First, pick some set of K points (chosen by sampling the huge dataset, and then applying
@@ -1525,31 +1525,31 @@ Three sets
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="org2ad138c"></a>Discard Set (DS)<br />
+<li><a id="org88698d2"></a>Discard Set (DS)<br />
 <div class="outline-text-5" id="text-8-3-2-1">
 <p>
 Points that are close to some centroid, can be used to summarize.
 </p>
 </div>
 </li>
-<li><a id="org8dcc6d0"></a>Compression Set (CS)<br />
+<li><a id="org8ee0952"></a>Compression Set (CS)<br />
 <div class="outline-text-5" id="text-8-3-2-2">
 <p>
 Set of Points that are close together, but not close to any cluster.
 </p>
 </div>
 </li>
-<li><a id="orga2de1c5"></a>Retained Set (RS)<br /></li>
+<li><a id="org8343d8e"></a>Retained Set (RS)<br /></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org3f1523f" class="outline-2">
-<h2 id="org3f1523f"><span class="section-number-2">9</span> Week 7 LSH Improvements</h2>
+<div id="outline-container-org50ce90b" class="outline-2">
+<h2 id="org50ce90b"><span class="section-number-2">9</span> Week 7 LSH Improvements</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org5d78cd3" class="outline-3">
-<h3 id="org5d78cd3"><span class="section-number-3">9.1</span> LSH families of Hash functions</h3>
+<div id="outline-container-orge8e3405" class="outline-3">
+<h3 id="orge8e3405"><span class="section-number-3">9.1</span> LSH families of Hash functions</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 What is a hash fn in context of LSH?
@@ -1574,8 +1574,8 @@ We can amplify the steepness of s curve by creating new lsh family by combining 
 combining AND, OR construction, we get 1-(1-p<sup>r</sup>)<sup>b</sup>. The correct values of r and b will increase p1 and decrease p2.
 </p>
 </div>
-<div id="outline-container-org105f8f3" class="outline-4">
-<h4 id="org105f8f3"><span class="section-number-4">9.1.1</span> Random Hyperplane family for cosine distance</h4>
+<div id="outline-container-orgd9ec3bb" class="outline-4">
+<h4 id="orgd9ec3bb"><span class="section-number-4">9.1.1</span> Random Hyperplane family for cosine distance</h4>
 <div class="outline-text-4" id="text-9-1-1">
 <p>
 (d1, d2, 1-d1/180, 1-d2/180)-sensitive family
@@ -1585,13 +1585,13 @@ combining AND, OR construction, we get 1-(1-p<sup>r</sup>)<sup>b</sup>. The corr
 </div>
 </div>
 
-<div id="outline-container-org06ccc81" class="outline-2">
-<h2 id="org06ccc81"><span class="section-number-2">10</span> Week 7 More about link analysis</h2>
+<div id="outline-container-orgc0015d1" class="outline-2">
+<h2 id="orgc0015d1"><span class="section-number-2">10</span> Week 7 More about link analysis</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddharth S</p>
-<p class="date">Created: 2018-12-30 Sun 12:10</p>
+<p class="date">Created: 2018-12-30 Sun 13:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

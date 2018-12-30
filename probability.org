@@ -1,4 +1,5 @@
 #+SETUPFILE: setup/theme-readtheorg.setup
+#+EXPORT_FILE_NAME: dist/probability.html
 #+OPTIONS: toc:3
 #+TITLE: Probability Basics
 

@@ -1,4 +1,5 @@
 #+SETUPFILE: setup/theme-readtheorg.setup
+#+EXPORT_FILE_NAME: dist/learning-from-data.html
 #+OPTIONS: toc:3
 #+TITLE: Learning from data course notes
 
