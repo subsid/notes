@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-11-02 Wed 12:52 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2018-12-30 Sun 12:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Learning from data course notes</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="siddharth subramaniyam" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Siddharth S" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +53,98 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,20 +177,21 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="https://rawgit.com/subsid/notes/master/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://rawgit.com/subsid/notes/master/styles/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://subsid.github.io/notes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://subsid.github.io/notes/styles/readtheorg/css/readtheorg.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://rawgit.com/subsid/notes/master/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://rawgit.com/subsid/notes/master/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://subsid.github.io/notes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://subsid.github.io/notes/styles/readtheorg/js/readtheorg.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -167,7 +253,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -176,160 +262,161 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline8">1. 1 - The Learning Problem</a>
+<li><a href="#org34237da">1. 1 - The Learning Problem</a>
 <ul>
-<li><a href="#orgheadline1">1.1. The essence of machine learning</a></li>
-<li><a href="#orgheadline2">1.2. Simple Example</a></li>
-<li><a href="#orgheadline4">1.3. Components of learning (Lets take Supervised learning)</a>
+<li><a href="#org943b6bf">1.1. The essence of machine learning</a></li>
+<li><a href="#org97288a2">1.2. Simple Example</a></li>
+<li><a href="#orgb3c9171">1.3. Components of learning (Lets take Supervised learning)</a>
 <ul>
-<li><a href="#orgheadline3">1.3.1. What do we get to select in this learning process</a></li>
+<li><a href="#org7a1e4ed">1.3.1. What do we get to select in this learning process</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">1.4. Simple Learning Model example, Peceptron</a>
+<li><a href="#orgbedd1d3">1.4. Simple Learning Model example, Peceptron</a>
 <ul>
-<li><a href="#orgheadline5">1.4.1. Algorithm (Perceptron Learning Algorith, PLA)</a></li>
+<li><a href="#org58b56a4">1.4.1. Algorithm (Perceptron Learning Algorith, PLA)</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline7">1.5. Basic Premise of learning</a></li>
+<li><a href="#org106e567">1.5. Basic Premise of learning</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline19">2. 2 - Is Learning Feasible</a>
+<li><a href="#orga45660c">2. 2 - Is Learning Feasible</a>
 <ul>
-<li><a href="#orgheadline11">2.1. Related Experiment</a>
+<li><a href="#org92dd4d0">2.1. Related Experiment</a>
 <ul>
-<li><a href="#orgheadline10">2.1.1. How close is &nu; to &mu;?</a></li>
+<li><a href="#org8f38299">2.1.1. How close is &nu; to &mu;?</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline18">2.2. How does this relate to learning?</a>
+<li><a href="#orgac01de1">2.2. How does this relate to learning?</a>
 <ul>
-<li><a href="#orgheadline12">2.2.1. So what does this mean?</a></li>
-<li><a href="#orgheadline14">2.2.2. Aside: Update the learning diagram to account for probability</a></li>
-<li><a href="#orgheadline15">2.2.3. Notation change for Learning</a></li>
-<li><a href="#orgheadline16">2.2.4. Account for multiple hypothesis</a></li>
-<li><a href="#orgheadline17">2.2.5. Simple solution and summary</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline35">3. 3 - Linear Model 1</a>
-<ul>
-<li><a href="#orgheadline20">3.1. Questions</a></li>
-<li><a href="#orgheadline22">3.2. Real data set</a>
-<ul>
-<li><a href="#orgheadline21">3.2.1. Input Representation</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline24">3.3. Linear Classification - Perceptron Learning Algorithm</a>
-<ul>
-<li><a href="#orgheadline23">3.3.1. The 'pocket' Algorithm</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline32">3.4. Linear Regression</a>
-<ul>
-<li><a href="#orgheadline25">3.4.1. What is linear regression trying to find</a></li>
-<li><a href="#orgheadline26">3.4.2. How to measure error</a></li>
-<li><a href="#orgheadline27">3.4.3. Expression for E<sub>in</sub></a></li>
-<li><a href="#orgheadline29">3.4.4. Minimizing E<sub>in</sub></a></li>
-<li><a href="#orgheadline30">3.4.5. The linear regression algorithm</a></li>
-<li><a href="#orgheadline31">3.4.6. Linear regression for classification</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline34">3.5. Nonlinear transformation</a>
-<ul>
-<li><a href="#orgheadline33">3.5.1. Linear in what?</a></li>
+<li><a href="#org1a1ddfb">2.2.1. So what does this mean?</a></li>
+<li><a href="#orga15c12e">2.2.2. Aside: Update the learning diagram to account for probability</a></li>
+<li><a href="#org244aa35">2.2.3. Notation change for Learning</a></li>
+<li><a href="#org1ba028a">2.2.4. Account for multiple hypothesis</a></li>
+<li><a href="#org4a6b080">2.2.5. Simple solution and summary</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline47">4. 4 - Error and Noise</a>
+<li><a href="#orgafb9782">3. 3 - Linear Model 1</a>
 <ul>
-<li><a href="#orgheadline38">4.1. Non-Linear transormation continued</a>
+<li><a href="#orgbd689dc">3.1. Questions</a></li>
+<li><a href="#org0cf8a38">3.2. Real data set</a>
 <ul>
-<li><a href="#orgheadline36">4.1.1. Why does it work?</a></li>
-<li><a href="#orgheadline37">4.1.2. What transforms to what</a></li>
+<li><a href="#orgc7226f3">3.2.1. Input Representation</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline39">4.2. Error Measures</a></li>
-<li><a href="#orgheadline40">4.3. How to choose an error measure</a></li>
-<li><a href="#orgheadline41">4.4. Noisy targets</a></li>
-<li><a href="#orgheadline42">4.5. Components of Learning (including noisy targets)</a></li>
-<li><a href="#orgheadline43">4.6. Distinction between P(y|x) and P(x)</a></li>
-<li><a href="#orgheadline46">4.7. Preamble to the theory</a>
+<li><a href="#orgc0918a7">3.3. Linear Classification - Perceptron Learning Algorithm</a>
 <ul>
-<li><a href="#orgheadline44">4.7.1. What do we know so far?</a></li>
-<li><a href="#orgheadline45">4.7.2. Full story of learning has 2 questions</a></li>
+<li><a href="#org579a6de">3.3.1. The 'pocket' Algorithm</a></li>
 </ul>
 </li>
+<li><a href="#org8440df6">3.4. Linear Regression</a>
+<ul>
+<li><a href="#orga9080f6">3.4.1. What is linear regression trying to find</a></li>
+<li><a href="#org492fc9e">3.4.2. How to measure error</a></li>
+<li><a href="#org268b772">3.4.3. Expression for E<sub>in</sub></a></li>
+<li><a href="#org410dcb4">3.4.4. Minimizing E<sub>in</sub></a></li>
+<li><a href="#org248fac9">3.4.5. The linear regression algorithm</a></li>
+<li><a href="#org28c8fc0">3.4.6. Linear regression for classification</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline56">5. 5 - Training vs Testing</a>
+<li><a href="#orgc280bac">3.5. Nonlinear transformation</a>
 <ul>
-<li><a href="#orgheadline48">5.1. What is the difference between training and testing?</a></li>
-<li><a href="#orgheadline49">5.2. Where did M come from?</a></li>
-<li><a href="#orgheadline55">5.3. Can we improve M?</a>
-<ul>
-<li><a href="#orgheadline50">5.3.1. Why do we care about this?</a></li>
-<li><a href="#orgheadline51">5.3.2. Dichotomies (mini-hypothesis)</a></li>
-<li><a href="#orgheadline52">5.3.3. Growth Funciton</a></li>
-<li><a href="#orgheadline53">5.3.4. key terms: Shattering and Breakpoint</a></li>
-<li><a href="#orgheadline54">5.3.5. What can we do with this stuff?</a></li>
+<li><a href="#org446dd92">3.5.1. Linear in what?</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline64">6. 6 - Theory of generalization</a>
+<li><a href="#org285faf7">4. 4 - Error and Noise</a>
 <ul>
-<li><a href="#orgheadline57">6.1. 2 things to prove</a></li>
-<li><a href="#orgheadline63">6.2. Bounding \(m_H(N)\)</a>
+<li><a href="#org31f0e41">4.1. Non-Linear transormation continued</a>
 <ul>
-<li><a href="#orgheadline58">6.2.1. Key quantity</a></li>
-<li><a href="#orgheadline59">6.2.2. Recursive bound</a></li>
-<li><a href="#orgheadline60">6.2.3. B(N, k) is a polynomial!</a></li>
-<li><a href="#orgheadline61">6.2.4. How can m<sub>H</sub>(N) replace M</a></li>
-<li><a href="#orgheadline62">6.2.5. The Vapnik-Chervonenkis Inequality</a></li>
+<li><a href="#org7ccee39">4.1.1. Why does it work?</a></li>
+<li><a href="#orgfb24a3a">4.1.2. What transforms to what</a></li>
+</ul>
+</li>
+<li><a href="#org681db06">4.2. Error Measures</a></li>
+<li><a href="#org8923081">4.3. How to choose an error measure</a></li>
+<li><a href="#org26cc982">4.4. Noisy targets</a></li>
+<li><a href="#orgf499b6e">4.5. Components of Learning (including noisy targets)</a></li>
+<li><a href="#org11164e5">4.6. Distinction between P(y|x) and P(x)</a></li>
+<li><a href="#orgd7b2ba9">4.7. Preamble to the theory</a>
+<ul>
+<li><a href="#orgf860781">4.7.1. What do we know so far?</a></li>
+<li><a href="#org04f55c5">4.7.2. Full story of learning has 2 questions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline72">7. 7 - The VC-Dimension</a>
+<li><a href="#orgbac0bd2">5. 5 - Training vs Testing</a>
 <ul>
-<li><a href="#orgheadline65">7.1. What is this?</a></li>
-<li><a href="#orgheadline66">7.2. VC-dimension and learning</a></li>
-<li><a href="#orgheadline67">7.3. VC-dimension of the perceptron</a></li>
-<li><a href="#orgheadline70">7.4. Interpretting the vc dimension (using the perceptron example)</a>
+<li><a href="#orgb6871c2">5.1. What is the difference between training and testing?</a></li>
+<li><a href="#org135ed7e">5.2. Where did M come from?</a></li>
+<li><a href="#org2db2902">5.3. Can we improve M?</a>
 <ul>
-<li><a href="#orgheadline68">7.4.1. Degrees of freedom</a></li>
-<li><a href="#orgheadline69">7.4.2. Number of data points needed</a></li>
+<li><a href="#org4cd26f2">5.3.1. Why do we care about this?</a></li>
+<li><a href="#org84e2a46">5.3.2. Dichotomies (mini-hypothesis)</a></li>
+<li><a href="#org8527426">5.3.3. Growth Funciton</a></li>
+<li><a href="#org533299c">5.3.4. key terms: Shattering and Breakpoint</a></li>
+<li><a href="#orge301de3">5.3.5. What can we do with this stuff?</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline71">7.5. Rearranging things</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline79">8. 8 - Bias-Variance Tradeoff</a>
+<li><a href="#orgb696a7a">6. 6 - Theory of generalization</a>
 <ul>
-<li><a href="#orgheadline73">8.1. Approximation-generalization tradeoff</a></li>
-<li><a href="#orgheadline74">8.2. Quantifying this trade-off</a></li>
-<li><a href="#orgheadline75">8.3. Start with E<sub>out</sub></a></li>
-<li><a href="#orgheadline76">8.4. Bias and Variance</a></li>
-<li><a href="#orgheadline77">8.5. Lesson learned</a></li>
-<li><a href="#orgheadline78">8.6. Learning curves (expected E<sub>out</sub> and E<sub>in</sub>)</a></li>
+<li><a href="#orgece3827">6.1. 2 things to prove</a></li>
+<li><a href="#orga98fcef">6.2. Bounding \(m_H(N)\)</a>
+<ul>
+<li><a href="#org4590cd3">6.2.1. Key quantity</a></li>
+<li><a href="#org659acc4">6.2.2. Recursive bound</a></li>
+<li><a href="#org832943b">6.2.3. B(N, k) is a polynomial!</a></li>
+<li><a href="#org7bb387f">6.2.4. How can m<sub>H</sub>(N) replace M</a></li>
+<li><a href="#org9cb968e">6.2.5. The Vapnik-Chervonenkis Inequality</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline80">9. 9 - Linear Model 2</a></li>
-<li><a href="#orgheadline82">10. 10 - Neural Networks</a>
+</ul>
+</li>
+<li><a href="#org7c1bd29">7. 7 - The VC-Dimension</a>
 <ul>
-<li><a href="#orgheadline81">10.1. Questions</a></li>
+<li><a href="#orga834d95">7.1. What is this?</a></li>
+<li><a href="#org27ab43c">7.2. VC-dimension and learning</a></li>
+<li><a href="#org0d1069a">7.3. VC-dimension of the perceptron</a></li>
+<li><a href="#org5d261b7">7.4. Interpretting the vc dimension (using the perceptron example)</a>
+<ul>
+<li><a href="#orgbdb5938">7.4.1. Degrees of freedom</a></li>
+<li><a href="#orgc828da9">7.4.2. Number of data points needed</a></li>
+</ul>
+</li>
+<li><a href="#orgadf23aa">7.5. Rearranging things</a></li>
+</ul>
+</li>
+<li><a href="#org8d7fcc7">8. 8 - Bias-Variance Tradeoff</a>
+<ul>
+<li><a href="#orgdc3baf8">8.1. Approximation-generalization tradeoff</a></li>
+<li><a href="#org3e69574">8.2. Quantifying this trade-off</a></li>
+<li><a href="#org056c35e">8.3. Start with E<sub>out</sub></a></li>
+<li><a href="#org70709ac">8.4. Bias and Variance</a></li>
+<li><a href="#orgdfec0ad">8.5. Lesson learned</a></li>
+<li><a href="#org2a40c05">8.6. Learning curves (expected E<sub>out</sub> and E<sub>in</sub>)</a></li>
+</ul>
+</li>
+<li><a href="#org9108f02">9. 9 - Linear Model 2</a></li>
+<li><a href="#org632cda9">10. 10 - Neural Networks</a>
+<ul>
+<li><a href="#org463e56e">10.1. Questions</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">1</span> 1 - The Learning Problem</h2>
+<div id="outline-container-org34237da" class="outline-2">
+<h2 id="org34237da"><span class="section-number-2">1</span> 1 - The Learning Problem</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> The essence of machine learning</h3>
+</div>
+<div id="outline-container-org943b6bf" class="outline-3">
+<h3 id="org943b6bf"><span class="section-number-3">1.1</span> The essence of machine learning</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>A pattern exists.</li>
@@ -338,8 +425,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Simple Example</h3>
+<div id="outline-container-org97288a2" class="outline-3">
+<h3 id="org97288a2"><span class="section-number-3">1.2</span> Simple Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 We have a bunch of movies and many customers. We have some ratings
@@ -365,8 +452,8 @@ data. This is 'learning from data'.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">1.3</span> Components of learning (Lets take Supervised learning)</h3>
+<div id="outline-container-orgb3c9171" class="outline-3">
+<h3 id="orgb3c9171"><span class="section-number-3">1.3</span> Components of learning (Lets take Supervised learning)</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Ex) A bank wants to know if it should approve credit for a customer.
@@ -407,8 +494,8 @@ The hypothesis set can be infinite (Learn from the set of all possible
 functions) or finite (like linear functions, quadratic functions etc).
 </p>
 </div>
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">1.3.1</span> What do we get to select in this learning process</h4>
+<div id="outline-container-org7a1e4ed" class="outline-4">
+<h4 id="org7a1e4ed"><span class="section-number-4">1.3.1</span> What do we get to select in this learning process</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Well, we can change the learning algorithm and hypothesis set.
@@ -417,8 +504,8 @@ Together, they define a <i>learning model</i>.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">1.4</span> Simple Learning Model example, Peceptron</h3>
+<div id="outline-container-orgbedd1d3" class="outline-3">
+<h3 id="orgbedd1d3"><span class="section-number-3">1.4</span> Simple Learning Model example, Peceptron</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>Can be used when data is linearly seperable and the output y is binary.</li>
@@ -433,8 +520,8 @@ Predict Sign(&Sigma;<sup>N</sup><sub>i=0</sub>(w<sub>i</sub>.x<sub>i</sub>)) whe
 How to find the weights w<sub>1</sub>&#x2026;w<sub>d</sub>?
 </p>
 </div>
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5"><span class="section-number-4">1.4.1</span> Algorithm (Perceptron Learning Algorith, PLA)</h4>
+<div id="outline-container-org58b56a4" class="outline-4">
+<h4 id="org58b56a4"><span class="section-number-4">1.4.1</span> Algorithm (Perceptron Learning Algorith, PLA)</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ol class="org-ol">
 <li>Initialize all weights to random numbers.</li>
@@ -456,8 +543,8 @@ real-values outputs and non-linear data.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">1.5</span> Basic Premise of learning</h3>
+<div id="outline-container-org106e567" class="outline-3">
+<h3 id="org106e567"><span class="section-number-3">1.5</span> Basic Premise of learning</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 <i>Use a bunch of observations to uncover an underlying process</i>
@@ -493,8 +580,8 @@ algorithm gets better.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="orgheadline19"><span class="section-number-2">2</span> 2 - Is Learning Feasible</h2>
+<div id="outline-container-orga45660c" class="outline-2">
+<h2 id="orga45660c"><span class="section-number-2">2</span> 2 - Is Learning Feasible</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 That's interesting&#x2026;  Well, the unknown target function can be any
@@ -503,8 +590,8 @@ functions that satisfy these 1000 points and yet differ on the 1001Th
 point.
 </p>
 </div>
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">2.1</span> Related Experiment</h3>
+<div id="outline-container-org92dd4d0" class="outline-3">
+<h3 id="org92dd4d0"><span class="section-number-3">2.1</span> Related Experiment</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Consider a bin filled with red and green marbles. The fraction of
@@ -514,8 +601,8 @@ green marbles in our sample is &nu;.</li>
 </ul>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">2.1.1</span> How close is &nu; to &mu;?</h4>
+<div id="outline-container-org8f38299" class="outline-4">
+<h4 id="org8f38299"><span class="section-number-4">2.1.1</span> How close is &nu; to &mu;?</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 Well, we can charaterize this using some inequality from probability.
@@ -533,18 +620,22 @@ P(|&mu; - &nu;| &gt; &epsilon;) &le; 2.e<sup>-2.&epsilon;<sup>2</sup>.N</sup>
 The statement "&nu; = &mu;" is P.A.C (Probably Approximately Correct)
 </p>
 </div>
-<ol class="org-ol"><li><a id="orgheadline9"></a>What does this mean?<br  /><div class="outline-text-5" id="text-2-1-1-1">
+<ol class="org-ol">
+<li><a id="orge756d56"></a>What does this mean?<br />
+<div class="outline-text-5" id="text-2-1-1-1">
 <ul class="org-ul">
 <li>Good thing, its a negative exponential with N. As N &uarr; the probability &darr;.</li>
 <li>Bad thing, there is an &epsilon;<sup>2</sup> in the exponent. If we need a tight bound,
 we are going to pay the price.</li>
 <li>Trade of: N, &epsilon;, and the bound.</li>
 </ul>
-</div></li></ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18"><span class="section-number-3">2.2</span> How does this relate to learning?</h3>
+<div id="outline-container-orgac01de1" class="outline-3">
+<h3 id="orgac01de1"><span class="section-number-3">2.2</span> How does this relate to learning?</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>In our bin, the unknown was a number &mu;, in learning the unknown is a function <i>f</i>.</li>
@@ -566,8 +657,8 @@ h(x) != f(x) &rArr; Marble is colored red.
 Thus, each bin is characterized by a hypothesis function <i>h</i>.
 </p>
 </div>
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">2.2.1</span> So what does this mean?</h4>
+<div id="outline-container-org1a1ddfb" class="outline-4">
+<h4 id="org1a1ddfb"><span class="section-number-4">2.2.1</span> So what does this mean?</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 h is fixed. For a <i>given h</i>, &nu; generalizes to &mu;. (with the hoeffding's bound)
@@ -579,8 +670,8 @@ Given a particular h, we can take a sample of N points and see what our &nu; is.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">2.2.2</span> Aside: Update the learning diagram to account for probability</h4>
+<div id="outline-container-orga15c12e" class="outline-4">
+<h4 id="orga15c12e"><span class="section-number-4">2.2.2</span> Aside: Update the learning diagram to account for probability</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 The reason we are doing this bin analogy and related theory is so that
@@ -592,7 +683,9 @@ In order to do that, we'll have to account for this <i>Probability</i> in
 our learning diagram. (points in this case)
 </p>
 </div>
-<ol class="org-ol"><li><a id="orgheadline13"></a>Updated learning diagram<br  /><div class="outline-text-5" id="text-2-2-2-1">
+<ol class="org-ol">
+<li><a id="org385faa1"></a>Updated learning diagram<br />
+<div class="outline-text-5" id="text-2-2-2-1">
 <ol class="org-ol">
 <li>Target Function, f: &Chi; &rarr; &Upsilon;</li>
 <li>Training Examples, (x<sub>1</sub>, y<sub>1</sub>), &#x2026; , (x<sub>N</sub>, y<sub>N</sub>)</li>
@@ -605,10 +698,12 @@ our learning diagram. (points in this case)
 <li>Hypothesis Set, &Eta;</li>
 <li>Learned hypothesis, g &asymp; f</li>
 </ol>
-</div></li></ol>
 </div>
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">2.2.3</span> Notation change for Learning</h4>
+</li>
+</ol>
+</div>
+<div id="outline-container-org244aa35" class="outline-4">
+<h4 id="org244aa35"><span class="section-number-4">2.2.3</span> Notation change for Learning</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <ul class="org-ul">
 <li>&mu; is 'out of sample' E<sub>out</sub>(h).</li>
@@ -624,8 +719,8 @@ P(|E<sub>in</sub>(h) - E<sub>out</sub>(h)| &gt; &epsilon;) &le; 2e<sup>-2.&epsil
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16"><span class="section-number-4">2.2.4</span> Account for multiple hypothesis</h4>
+<div id="outline-container-org1ba028a" class="outline-4">
+<h4 id="org1ba028a"><span class="section-number-4">2.2.4</span> Account for multiple hypothesis</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 We have multiple hypothesis functions, thus, we can have multiple
@@ -645,8 +740,8 @@ good approximation for E<sub>out</sub> and we end up picking that. (like picking
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17"><span class="section-number-4">2.2.5</span> Simple solution and summary</h4>
+<div id="outline-container-org4a6b080" class="outline-4">
+<h4 id="org4a6b080"><span class="section-number-4">2.2.5</span> Simple solution and summary</h4>
 <div class="outline-text-4" id="text-2-2-5">
 <p>
 Once we pick our final hypothesis <i>g</i> (from <i>h</i>), we want to know
@@ -685,11 +780,12 @@ Thus, in  a probabilistic sense learning is feasible.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline35" class="outline-2">
-<h2 id="orgheadline35"><span class="section-number-2">3</span> 3 - Linear Model 1</h2>
+<div id="outline-container-orgafb9782" class="outline-2">
+<h2 id="orgafb9782"><span class="section-number-2">3</span> 3 - Linear Model 1</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">3.1</span> Questions</h3>
+</div>
+<div id="outline-container-orgbd689dc" class="outline-3">
+<h3 id="orgbd689dc"><span class="section-number-3">3.1</span> Questions</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>Improving regression model, is it possible to accommodate more data
@@ -697,15 +793,15 @@ in a supervised learning problem.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22"><span class="section-number-3">3.2</span> Real data set</h3>
+<div id="outline-container-org0cf8a38" class="outline-3">
+<h3 id="org0cf8a38"><span class="section-number-3">3.2</span> Real data set</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>Consider the supervised learning problem of identifying digits (for say postal code).</li>
 </ul>
 </div>
-<div id="outline-container-orgheadline21" class="outline-4">
-<h4 id="orgheadline21"><span class="section-number-4">3.2.1</span> Input Representation</h4>
+<div id="outline-container-orgc7226f3" class="outline-4">
+<h4 id="orgc7226f3"><span class="section-number-4">3.2.1</span> Input Representation</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
 <li>A digit is a x<sub>256</sub> vector of pixel values (x<sub>0</sub>, x<sub>1</sub> &#x2026; x<sub>256</sub>). This is wayy too complex and</li>
@@ -723,8 +819,8 @@ Now we only have to find weights (w<sub>0</sub>, w<sub>1</sub>, w<sub>2</sub>) w
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="orgheadline24"><span class="section-number-3">3.3</span> Linear Classification - Perceptron Learning Algorithm</h3>
+<div id="outline-container-orgc0918a7" class="outline-3">
+<h3 id="orgc0918a7"><span class="section-number-3">3.3</span> Linear Classification - Perceptron Learning Algorithm</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 What does PLA do?
@@ -736,8 +832,8 @@ for non-seperable data, it cannot converge. Hence we stop after a
 fixed number of iterations.</li>
 </ul>
 </div>
-<div id="outline-container-orgheadline23" class="outline-4">
-<h4 id="orgheadline23"><span class="section-number-4">3.3.1</span> The 'pocket' Algorithm</h4>
+<div id="outline-container-org579a6de" class="outline-4">
+<h4 id="org579a6de"><span class="section-number-4">3.3.1</span> The 'pocket' Algorithm</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 This is a modification of the perceptron learning algorithm, where we
@@ -747,8 +843,8 @@ final hypothesis <i>g</i>.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline32" class="outline-3">
-<h3 id="orgheadline32"><span class="section-number-3">3.4</span> Linear Regression</h3>
+<div id="outline-container-org8440df6" class="outline-3">
+<h3 id="org8440df6"><span class="section-number-3">3.4</span> Linear Regression</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Regression - 'real valued output'. Thats all it means. The term comes
@@ -785,8 +881,8 @@ x = 1 training example [x<sub>0</sub>, x<sub>1</sub> &#x2026; x<sub>d</sub>]
 This is called 'linear regression' because the form in terms of the input 'x' is linear.
 </p>
 </div>
-<div id="outline-container-orgheadline25" class="outline-4">
-<h4 id="orgheadline25"><span class="section-number-4">3.4.1</span> What is linear regression trying to find</h4>
+<div id="outline-container-orga9080f6" class="outline-4">
+<h4 id="orga9080f6"><span class="section-number-4">3.4.1</span> What is linear regression trying to find</h4>
 <div class="outline-text-4" id="text-3-4-1">
 <p>
 In our credit line example,
@@ -805,8 +901,8 @@ Linear regression tries to replicate this behavior.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline26" class="outline-4">
-<h4 id="orgheadline26"><span class="section-number-4">3.4.2</span> How to measure error</h4>
+<div id="outline-container-org492fc9e" class="outline-4">
+<h4 id="org492fc9e"><span class="section-number-4">3.4.2</span> How to measure error</h4>
 <div class="outline-text-4" id="text-3-4-2">
 <p>
 How well does h(x) approximate f(x) (the target function)? 
@@ -840,8 +936,8 @@ the space we are working with).
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline27" class="outline-4">
-<h4 id="orgheadline27"><span class="section-number-4">3.4.3</span> Expression for E<sub>in</sub></h4>
+<div id="outline-container-org268b772" class="outline-4">
+<h4 id="org268b772"><span class="section-number-4">3.4.3</span> Expression for E<sub>in</sub></h4>
 <div class="outline-text-4" id="text-3-4-3">
 <p>
 Let's try to write this in vector form.
@@ -853,7 +949,7 @@ TODO :: seems like small caps doesn't work with mathjax, need to fix the x to be
 
 \begin{equation}
 \begin{split}
-E_{in}(w)       &= \frac{1}{N} \Sigma^N_{n=1}(w^{T}.x_n - y_n)^2 \\
+E_{in}(w)	&= \frac{1}{N} \Sigma^N_{n=1}(w^{T}.x_n - y_n)^2 \\
  &= \frac{1}{N} || X.w - y ||^2
 \end{split}
 \end{equation}
@@ -890,8 +986,8 @@ y_N
 \end{bmatrix}
 </div>
 </div>
-<div id="outline-container-orgheadline29" class="outline-4">
-<h4 id="orgheadline29"><span class="section-number-4">3.4.4</span> Minimizing E<sub>in</sub></h4>
+<div id="outline-container-org410dcb4" class="outline-4">
+<h4 id="org410dcb4"><span class="section-number-4">3.4.4</span> Minimizing E<sub>in</sub></h4>
 <div class="outline-text-4" id="text-3-4-4">
 <p>
 We can use some matrix calculus and find the min of our E<sub>in</sub> expression.
@@ -924,7 +1020,9 @@ in some sense. ( \(X.X^{\dagger}\) is not identity. Hence the
 pseudo).
 </p>
 </div>
-<ol class="org-ol"><li><a id="orgheadline28"></a>From a computational standpoint, its a nice quantity<br  /><div class="outline-text-5" id="text-3-4-4-1">
+<ol class="org-ol">
+<li><a id="org0d9b1c1"></a>From a computational standpoint, its a nice quantity<br />
+<div class="outline-text-5" id="text-3-4-4-1">
 <p>
 \[X^{\dagger} = (X^{T}.X)^{-1}.X^{T}\]
 </p>
@@ -950,10 +1048,12 @@ The final matrix X^&dagger; has dimensions  (d+1 *  N)
 <p>
 X<sup>&dagger;</sup>.y has dimensions (d+1 * 1) as expected. (for the weights)
 </p>
-</div></li></ol>
 </div>
-<div id="outline-container-orgheadline30" class="outline-4">
-<h4 id="orgheadline30"><span class="section-number-4">3.4.5</span> The linear regression algorithm</h4>
+</li>
+</ol>
+</div>
+<div id="outline-container-org248fac9" class="outline-4">
+<h4 id="org248fac9"><span class="section-number-4">3.4.5</span> The linear regression algorithm</h4>
 <div class="outline-text-4" id="text-3-4-5">
 <ol class="org-ol">
 <li>Construct X and y using the training examples.</li>
@@ -969,8 +1069,8 @@ Since its so straight forward, it can be used as a component in many other learn
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline31" class="outline-4">
-<h4 id="orgheadline31"><span class="section-number-4">3.4.6</span> Linear regression for classification</h4>
+<div id="outline-container-org28c8fc0" class="outline-4">
+<h4 id="org28c8fc0"><span class="section-number-4">3.4.6</span> Linear regression for classification</h4>
 <div class="outline-text-4" id="text-3-4-6">
 <p>
 Classification is just a special case of regression right? The output is 1 or -1, which is a real-value.
@@ -1001,8 +1101,8 @@ starting with 0s).
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline34" class="outline-3">
-<h3 id="orgheadline34"><span class="section-number-3">3.5</span> Nonlinear transformation</h3>
+<div id="outline-container-orgc280bac" class="outline-3">
+<h3 id="orgc280bac"><span class="section-number-3">3.5</span> Nonlinear transformation</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 In real life, data is not always linearly seperable.
@@ -1022,8 +1122,8 @@ Can we do that with linear models?
 The answer is yes.
 </p>
 </div>
-<div id="outline-container-orgheadline33" class="outline-4">
-<h4 id="orgheadline33"><span class="section-number-4">3.5.1</span> Linear in what?</h4>
+<div id="outline-container-org446dd92" class="outline-4">
+<h4 id="org446dd92"><span class="section-number-4">3.5.1</span> Linear in what?</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 Regression implements
@@ -1054,11 +1154,12 @@ Thus, we can add 'features' that are non-linearly functions of x (like
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline47" class="outline-2">
-<h2 id="orgheadline47"><span class="section-number-2">4</span> 4 - Error and Noise</h2>
+<div id="outline-container-org285faf7" class="outline-2">
+<h2 id="org285faf7"><span class="section-number-2">4</span> 4 - Error and Noise</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline38" class="outline-3">
-<h3 id="orgheadline38"><span class="section-number-3">4.1</span> Non-Linear transormation continued</h3>
+</div>
+<div id="outline-container-org31f0e41" class="outline-3">
+<h3 id="org31f0e41"><span class="section-number-3">4.1</span> Non-Linear transormation continued</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Intuitive idea, Take a point in input space x and transform it using
@@ -1070,8 +1171,8 @@ that to predict y.
 This trick can be used to create arbitrarilty complex dimensions and learn.
 </p>
 </div>
-<div id="outline-container-orgheadline36" class="outline-4">
-<h4 id="orgheadline36"><span class="section-number-4">4.1.1</span> Why does it work?</h4>
+<div id="outline-container-org7ccee39" class="outline-4">
+<h4 id="org7ccee39"><span class="section-number-4">4.1.1</span> Why does it work?</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 Any non-linear dependency in one subspace can be treated as a linear
@@ -1084,8 +1185,8 @@ has x<sub>1</sub><sup>2</sup> and x<sub>2</sub><sup>2</sup> as dimensions.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline37" class="outline-4">
-<h4 id="orgheadline37"><span class="section-number-4">4.1.2</span> What transforms to what</h4>
+<div id="outline-container-orgfb24a3a" class="outline-4">
+<h4 id="orgfb24a3a"><span class="section-number-4">4.1.2</span> What transforms to what</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 We apply a transformation &phi; that maps X -&gt; Z
@@ -1104,8 +1205,8 @@ Final hypothesis g(x) = sign(~{w}<sup>T</sup>.z) = sign(~{w}<sup>T</sup>.&phi;(x
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline39" class="outline-3">
-<h3 id="orgheadline39"><span class="section-number-3">4.2</span> Error Measures</h3>
+<div id="outline-container-org681db06" class="outline-3">
+<h3 id="org681db06"><span class="section-number-3">4.2</span> Error Measures</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 What does "h &asymp; f" mean?
@@ -1160,8 +1261,8 @@ Out-of sample error, is the expected value over all points in our input space.
 </div>
 </div>
 
-<div id="outline-container-orgheadline40" class="outline-3">
-<h3 id="orgheadline40"><span class="section-number-3">4.3</span> How to choose an error measure</h3>
+<div id="outline-container-org8923081" class="outline-3">
+<h3 id="org8923081"><span class="section-number-3">4.3</span> How to choose an error measure</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>Ideally, the error measure chosen should always be domain specific
@@ -1181,8 +1282,8 @@ ex) Squared error. (gave a closed form solution for the linear regression model)
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline41" class="outline-3">
-<h3 id="orgheadline41"><span class="section-number-3">4.4</span> Noisy targets</h3>
+<div id="outline-container-org26cc982" class="outline-3">
+<h3 id="org26cc982"><span class="section-number-3">4.4</span> Noisy targets</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 In reality, we rarely get a clean target function. We'll mostly have
@@ -1223,8 +1324,8 @@ Noisy Target = deterministic target f(x) = E[y|x] plus noise y - f(x).
 </div>
 </div>
 
-<div id="outline-container-orgheadline42" class="outline-3">
-<h3 id="orgheadline42"><span class="section-number-3">4.5</span> Components of Learning (including noisy targets)</h3>
+<div id="outline-container-orgf499b6e" class="outline-3">
+<h3 id="orgf499b6e"><span class="section-number-3">4.5</span> Components of Learning (including noisy targets)</h3>
 <div class="outline-text-3" id="text-4-5">
 <ol class="org-ol">
 <li>Unknown Target Distribution P(y|x).</li>
@@ -1245,8 +1346,8 @@ E[y|x] plus y - f(x)
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline43" class="outline-3">
-<h3 id="orgheadline43"><span class="section-number-3">4.6</span> Distinction between P(y|x) and P(x)</h3>
+<div id="outline-container-org11164e5" class="outline-3">
+<h3 id="org11164e5"><span class="section-number-3">4.6</span> Distinction between P(y|x) and P(x)</h3>
 <div class="outline-text-3" id="text-4-6">
 <ul class="org-ul">
 <li>P(x) was introduced to accommodate the hoeffding's inequality.</li>
@@ -1269,11 +1370,12 @@ Our target distribution is only P(y|x).
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline46" class="outline-3">
-<h3 id="orgheadline46"><span class="section-number-3">4.7</span> Preamble to the theory</h3>
+<div id="outline-container-orgd7b2ba9" class="outline-3">
+<h3 id="orgd7b2ba9"><span class="section-number-3">4.7</span> Preamble to the theory</h3>
 <div class="outline-text-3" id="text-4-7">
-</div><div id="outline-container-orgheadline44" class="outline-4">
-<h4 id="orgheadline44"><span class="section-number-4">4.7.1</span> What do we know so far?</h4>
+</div>
+<div id="outline-container-orgf860781" class="outline-4">
+<h4 id="orgf860781"><span class="section-number-4">4.7.1</span> What do we know so far?</h4>
 <div class="outline-text-4" id="text-4-7-1">
 <p>
 We proved that E<sub>out</sub>(h) &asymp; E<sub>in</sub>(h) based on some bound.
@@ -1289,8 +1391,8 @@ For us to learn, we have to find g &asymp; f, which means E<sub>out</sub>(g) &as
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline45" class="outline-4">
-<h4 id="orgheadline45"><span class="section-number-4">4.7.2</span> Full story of learning has 2 questions</h4>
+<div id="outline-container-org04f55c5" class="outline-4">
+<h4 id="org04f55c5"><span class="section-number-4">4.7.2</span> Full story of learning has 2 questions</h4>
 <div class="outline-text-4" id="text-4-7-2">
 <p>
 E<sub>out</sub>(g) &asymp; 0 is achieved through:
@@ -1312,11 +1414,12 @@ Good stuff!
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline56" class="outline-2">
-<h2 id="orgheadline56"><span class="section-number-2">5</span> 5 - Training vs Testing</h2>
+<div id="outline-container-orgbac0bd2" class="outline-2">
+<h2 id="orgbac0bd2"><span class="section-number-2">5</span> 5 - Training vs Testing</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgheadline48" class="outline-3">
-<h3 id="orgheadline48"><span class="section-number-3">5.1</span> What is the difference between training and testing?</h3>
+</div>
+<div id="outline-container-orgb6871c2" class="outline-3">
+<h3 id="orgb6871c2"><span class="section-number-3">5.1</span> What is the difference between training and testing?</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 From our previous discussions, hoeffding inequality for \(E_{in}, E_{out}\)
@@ -1355,8 +1458,8 @@ tighter bound.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline49" class="outline-3">
-<h3 id="orgheadline49"><span class="section-number-3">5.2</span> Where did M come from?</h3>
+<div id="outline-container-org135ed7e" class="outline-3">
+<h3 id="org135ed7e"><span class="section-number-3">5.2</span> Where did M come from?</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 Bad events B<sub>1</sub>, B<sub>2</sub> &#x2026; B<sub>m</sub> are given by
@@ -1400,8 +1503,8 @@ overlap of the bad events Bs'.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline55" class="outline-3">
-<h3 id="orgheadline55"><span class="section-number-3">5.3</span> Can we improve M?</h3>
+<div id="outline-container-org2db2902" class="outline-3">
+<h3 id="org2db2902"><span class="section-number-3">5.3</span> Can we improve M?</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 Note: The full proof is available in the book. These notes just give
@@ -1433,8 +1536,8 @@ This means, |E<sub>in</sub>(h<sub>1</sub>) - E<sub>out</sub>(h<sub>1</sub>)| (sa
 </p>
 </div>
 
-<div id="outline-container-orgheadline50" class="outline-4">
-<h4 id="orgheadline50"><span class="section-number-4">5.3.1</span> Why do we care about this?</h4>
+<div id="outline-container-org4cd26f2" class="outline-4">
+<h4 id="org4cd26f2"><span class="section-number-4">5.3.1</span> Why do we care about this?</h4>
 <div class="outline-text-4" id="text-5-3-1">
 <p>
 That's because if P[1 &gt; &epsilon;], P[2 &gt; &epsilon;] is also pretty
@@ -1442,8 +1545,8 @@ high.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline51" class="outline-4">
-<h4 id="orgheadline51"><span class="section-number-4">5.3.2</span> Dichotomies (mini-hypothesis)</h4>
+<div id="outline-container-org84e2a46" class="outline-4">
+<h4 id="org84e2a46"><span class="section-number-4">5.3.2</span> Dichotomies (mini-hypothesis)</h4>
 <div class="outline-text-4" id="text-5-3-2">
 <p>
 A hypothesis \(h: X -> {+1, -1}\).
@@ -1464,8 +1567,8 @@ Dichotomy is a candidate for replacing <i>M</i>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline52" class="outline-4">
-<h4 id="orgheadline52"><span class="section-number-4">5.3.3</span> Growth Funciton</h4>
+<div id="outline-container-org8527426" class="outline-4">
+<h4 id="org8527426"><span class="section-number-4">5.3.3</span> Growth Funciton</h4>
 <div class="outline-text-4" id="text-5-3-3">
 <p>
 Growth function \(m_H(N)\) is defined as the most number of dichotomies on any 'N' points.
@@ -1504,8 +1607,8 @@ possible dichotomies of 2<sup>4</sup> = 16. We'll get something less than
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline53" class="outline-4">
-<h4 id="orgheadline53"><span class="section-number-4">5.3.4</span> key terms: Shattering and Breakpoint</h4>
+<div id="outline-container-org533299c" class="outline-4">
+<h4 id="org533299c"><span class="section-number-4">5.3.4</span> key terms: Shattering and Breakpoint</h4>
 <div class="outline-text-4" id="text-5-3-4">
 <p>
 We call 'N' points as being <i>shattered</i> by a hypothesis set, if we can
@@ -1530,8 +1633,8 @@ Any break point =&gt; \(m_H(N) \lt 2^{N}\)
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline54" class="outline-4">
-<h4 id="orgheadline54"><span class="section-number-4">5.3.5</span> What can we do with this stuff?</h4>
+<div id="outline-container-orge301de3" class="outline-4">
+<h4 id="orge301de3"><span class="section-number-4">5.3.5</span> What can we do with this stuff?</h4>
 <div class="outline-text-4" id="text-5-3-5">
 <p>
 We had,
@@ -1551,11 +1654,12 @@ sets.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline64" class="outline-2">
-<h2 id="orgheadline64"><span class="section-number-2">6</span> 6 - Theory of generalization</h2>
+<div id="outline-container-orgb696a7a" class="outline-2">
+<h2 id="orgb696a7a"><span class="section-number-2">6</span> 6 - Theory of generalization</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgheadline57" class="outline-3">
-<h3 id="orgheadline57"><span class="section-number-3">6.1</span> 2 things to prove</h3>
+</div>
+<div id="outline-container-orgece3827" class="outline-3">
+<h3 id="orgece3827"><span class="section-number-3">6.1</span> 2 things to prove</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>Prove that \(m_H(N)\) is polynomial.</li>
@@ -1563,8 +1667,8 @@ sets.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline63" class="outline-3">
-<h3 id="orgheadline63"><span class="section-number-3">6.2</span> Bounding \(m_H(N)\)</h3>
+<div id="outline-container-orga98fcef" class="outline-3">
+<h3 id="orga98fcef"><span class="section-number-3">6.2</span> Bounding \(m_H(N)\)</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 The goal is to show \(m_H(N)\) &le; a polynomial.
@@ -1574,8 +1678,8 @@ The goal is to show \(m_H(N)\) &le; a polynomial.
 Checkout lectures/book for the entire proof, but here is the basic idea.
 </p>
 </div>
-<div id="outline-container-orgheadline58" class="outline-4">
-<h4 id="orgheadline58"><span class="section-number-4">6.2.1</span> Key quantity</h4>
+<div id="outline-container-org4590cd3" class="outline-4">
+<h4 id="org4590cd3"><span class="section-number-4">6.2.1</span> Key quantity</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <p>
 \(B(N, k)\): Maximum number of dichotomies on N points, with a break
@@ -1590,8 +1694,8 @@ bound for \(m_H(N, k)\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline59" class="outline-4">
-<h4 id="orgheadline59"><span class="section-number-4">6.2.2</span> Recursive bound</h4>
+<div id="outline-container-org659acc4" class="outline-4">
+<h4 id="org659acc4"><span class="section-number-4">6.2.2</span> Recursive bound</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <p>
 The proof is based on a recursive argument. (see lectures for details)
@@ -1656,8 +1760,8 @@ Solving for this, we get
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline60" class="outline-4">
-<h4 id="orgheadline60"><span class="section-number-4">6.2.3</span> B(N, k) is a polynomial!</h4>
+<div id="outline-container-org832943b" class="outline-4">
+<h4 id="org832943b"><span class="section-number-4">6.2.3</span> B(N, k) is a polynomial!</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <p>
 For a given H, the break point k is fixed.
@@ -1672,8 +1776,8 @@ B(N, k) is polynomial in N. The maximum power in B(N, k) is N<sup>k-1</sup>, hen
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline61" class="outline-4">
-<h4 id="orgheadline61"><span class="section-number-4">6.2.4</span> How can m<sub>H</sub>(N) replace M</h4>
+<div id="outline-container-org7bb387f" class="outline-4">
+<h4 id="org7bb387f"><span class="section-number-4">6.2.4</span> How can m<sub>H</sub>(N) replace M</h4>
 <div class="outline-text-4" id="text-6-2-4">
 <p>
 This is a slightly involved proof, given in the text book.
@@ -1712,8 +1816,8 @@ realm of dichotomies.
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline62" class="outline-4">
-<h4 id="orgheadline62"><span class="section-number-4">6.2.5</span> The Vapnik-Chervonenkis Inequality</h4>
+<div id="outline-container-org9cb968e" class="outline-4">
+<h4 id="org9cb968e"><span class="section-number-4">6.2.5</span> The Vapnik-Chervonenkis Inequality</h4>
 <div class="outline-text-4" id="text-6-2-5">
 <p>
 \[ P[|E_{in}(g) - E_{out}(g) | \gt \epsilon] \le 4.m_{H}(2N).e^{-\frac{1}{8}.\epsilon^{2}.N} \]
@@ -1722,16 +1826,16 @@ realm of dichotomies.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline72" class="outline-2">
-<h2 id="orgheadline72"><span class="section-number-2">7</span> 7 - The VC-Dimension</h2>
+<div id="outline-container-org7c1bd29" class="outline-2">
+<h2 id="org7c1bd29"><span class="section-number-2">7</span> 7 - The VC-Dimension</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Most useful quantity from all of the theory we discussed. Something to
 remember throughout your career ;)
 </p>
 </div>
-<div id="outline-container-orgheadline65" class="outline-3">
-<h3 id="orgheadline65"><span class="section-number-3">7.1</span> What is this?</h3>
+<div id="outline-container-orga834d95" class="outline-3">
+<h3 id="orga834d95"><span class="section-number-3">7.1</span> What is this?</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 The VC-dimension is defined for a hypothesis set <i>H</i>, denoted by d<sub>VC</sub>(H)
@@ -1758,8 +1862,8 @@ In terms of vc-dimension,
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline66" class="outline-3">
-<h3 id="orgheadline66"><span class="section-number-3">7.2</span> VC-dimension and learning</h3>
+<div id="outline-container-org27ab43c" class="outline-3">
+<h3 id="org27ab43c"><span class="section-number-3">7.2</span> VC-dimension and learning</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 \(d_{VC} is finite\) =&gt; g &isin; H will generalize$
@@ -1775,19 +1879,20 @@ In terms of vc-dimension,
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline67" class="outline-3">
-<h3 id="orgheadline67"><span class="section-number-3">7.3</span> VC-dimension of the perceptron</h3>
+<div id="outline-container-org0d1069a" class="outline-3">
+<h3 id="org0d1069a"><span class="section-number-3">7.3</span> VC-dimension of the perceptron</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 \(d_{VC} = d+1 for a 'd' dimensional space\) (refer to slides for proof)
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline70" class="outline-3">
-<h3 id="orgheadline70"><span class="section-number-3">7.4</span> Interpretting the vc dimension (using the perceptron example)</h3>
+<div id="outline-container-org5d261b7" class="outline-3">
+<h3 id="org5d261b7"><span class="section-number-3">7.4</span> Interpretting the vc dimension (using the perceptron example)</h3>
 <div class="outline-text-3" id="text-7-4">
-</div><div id="outline-container-orgheadline68" class="outline-4">
-<h4 id="orgheadline68"><span class="section-number-4">7.4.1</span> Degrees of freedom</h4>
+</div>
+<div id="outline-container-orgbdb5938" class="outline-4">
+<h4 id="orgbdb5938"><span class="section-number-4">7.4.1</span> Degrees of freedom</h4>
 <div class="outline-text-4" id="text-7-4-1">
 <p>
 Parameters of a model give us degrees of freedom in order to create multiple hypothesis. i.e we can vary
@@ -1829,8 +1934,8 @@ freedom.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline69" class="outline-4">
-<h4 id="orgheadline69"><span class="section-number-4">7.4.2</span> Number of data points needed</h4>
+<div id="outline-container-orgc828da9" class="outline-4">
+<h4 id="orgc828da9"><span class="section-number-4">7.4.2</span> Number of data points needed</h4>
 <div class="outline-text-4" id="text-7-4-2">
 <p>
 How does value of v<sub>DC</sub> affect the number of examples needed?
@@ -1893,8 +1998,8 @@ Rule of thumb for getting 'reasonable' generalization:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline71" class="outline-3">
-<h3 id="orgheadline71"><span class="section-number-3">7.5</span> Rearranging things</h3>
+<div id="outline-container-orgadf23aa" class="outline-3">
+<h3 id="orgadf23aa"><span class="section-number-3">7.5</span> Rearranging things</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
 The VC Inequality,
@@ -1960,15 +2065,15 @@ based on this quantity.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline79" class="outline-2">
-<h2 id="orgheadline79"><span class="section-number-2">8</span> 8 - Bias-Variance Tradeoff</h2>
+<div id="outline-container-org8d7fcc7" class="outline-2">
+<h2 id="org8d7fcc7"><span class="section-number-2">8</span> 8 - Bias-Variance Tradeoff</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Stand-alone theory. Different angle on generalization.
 </p>
 </div>
-<div id="outline-container-orgheadline73" class="outline-3">
-<h3 id="orgheadline73"><span class="section-number-3">8.1</span> Approximation-generalization tradeoff</h3>
+<div id="outline-container-orgdc3baf8" class="outline-3">
+<h3 id="orgdc3baf8"><span class="section-number-3">8.1</span> Approximation-generalization tradeoff</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 Small E<sub>out</sub>: good approximation of f.
@@ -1983,8 +2088,8 @@ Less complex H &rArr; better chance of generalizing out of sample.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline74" class="outline-3">
-<h3 id="orgheadline74"><span class="section-number-3">8.2</span> Quantifying this trade-off</h3>
+<div id="outline-container-org3e69574" class="outline-3">
+<h3 id="org3e69574"><span class="section-number-3">8.2</span> Quantifying this trade-off</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 One approach was the vc-analysis,
@@ -2008,8 +2113,8 @@ Our analysis applies to real-valued targets and uses squared error.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline75" class="outline-3">
-<h3 id="orgheadline75"><span class="section-number-3">8.3</span> Start with E<sub>out</sub></h3>
+<div id="outline-container-org056c35e" class="outline-3">
+<h3 id="org056c35e"><span class="section-number-3">8.3</span> Start with E<sub>out</sub></h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 See slides for the full derivation, but here is the basic idea.
@@ -2077,8 +2182,8 @@ we get,
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline76" class="outline-3">
-<h3 id="orgheadline76"><span class="section-number-3">8.4</span> Bias and Variance</h3>
+<div id="outline-container-org70709ac" class="outline-3">
+<h3 id="org70709ac"><span class="section-number-3">8.4</span> Bias and Variance</h3>
 <div class="outline-text-3" id="text-8-4">
 <p>
 \[ \underbrace{E_{D}[(g^{D}(x) - \bar{g}(x))^{2}]}_{var(x)} + \underbrace{(\bar{g}(x) - f(x))^2}_{bias(x)} \]
@@ -2103,7 +2208,7 @@ Therefore,
 
 <p>
 E<sub>D</sub>[E<sub>out</sub>(g<sup>D</sup>)] = E<sub>x</sub>[bias(x) + var(x)]
-                  = bias + var
+		  = bias + var
 </p>
 
 <p>
@@ -2120,16 +2225,16 @@ There is a very nice example in the slides for understanding bias and variance. 
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline77" class="outline-3">
-<h3 id="orgheadline77"><span class="section-number-3">8.5</span> Lesson learned</h3>
+<div id="outline-container-orgdfec0ad" class="outline-3">
+<h3 id="orgdfec0ad"><span class="section-number-3">8.5</span> Lesson learned</h3>
 <div class="outline-text-3" id="text-8-5">
 <p>
 Match 'model complexity' to the data resources you have, not to the <b>target complexity</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline78" class="outline-3">
-<h3 id="orgheadline78"><span class="section-number-3">8.6</span> Learning curves (expected E<sub>out</sub> and E<sub>in</sub>)</h3>
+<div id="outline-container-org2a40c05" class="outline-3">
+<h3 id="org2a40c05"><span class="section-number-3">8.6</span> Learning curves (expected E<sub>out</sub> and E<sub>in</sub>)</h3>
 <div class="outline-text-3" id="text-8-6">
 <p>
 Data set D of size N
@@ -2144,14 +2249,15 @@ See slides for details.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline80" class="outline-2">
-<h2 id="orgheadline80"><span class="section-number-2">9</span> 9 - Linear Model 2</h2>
+<div id="outline-container-org9108f02" class="outline-2">
+<h2 id="org9108f02"><span class="section-number-2">9</span> 9 - Linear Model 2</h2>
 </div>
-<div id="outline-container-orgheadline82" class="outline-2">
-<h2 id="orgheadline82"><span class="section-number-2">10</span> 10 - Neural Networks</h2>
+<div id="outline-container-org632cda9" class="outline-2">
+<h2 id="org632cda9"><span class="section-number-2">10</span> 10 - Neural Networks</h2>
 <div class="outline-text-2" id="text-10">
-</div><div id="outline-container-orgheadline81" class="outline-3">
-<h3 id="orgheadline81"><span class="section-number-3">10.1</span> Questions</h3>
+</div>
+<div id="outline-container-org463e56e" class="outline-3">
+<h3 id="org463e56e"><span class="section-number-3">10.1</span> Questions</h3>
 <div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
 <li>1st layer is real valued (perceptron) rest are always binary?</li>
@@ -2161,8 +2267,8 @@ See slides for details.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: siddharth subramaniyam</p>
-<p class="date">Created: 2016-11-02 Wed 12:52</p>
+<p class="author">Author: Siddharth S</p>
+<p class="date">Created: 2018-12-30 Sun 12:09</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
